@@ -28,7 +28,7 @@ const GameProgress = ({
               content = '✕'
               break
             default:
-              bgColor = 'bg-yellow-400 dark:bg-yellow-500'
+              bgColor = 'bg-yellow-550 dark:bg-yellow-500'
               content = '?'
               break
           }

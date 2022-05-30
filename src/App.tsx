@@ -37,8 +37,10 @@ function shuffle<T>(array: T[]): T[] {
   return array
 }
 
+const generateQuestions = () => shuffle(TECH_ABBREVIATIONS).slice(0, QUESTIONS_COUNT)
+
 export default function App() {
-  const [questions] = useState(() => shuffle(TECH_ABBREVIATIONS).slice(0, QUESTIONS_COUNT))
+  const [questions, setQuestions] = useState(generateQuestions)
 
   const [gameStep, setGameStep] = useState<GameStep>(GameStep.INITIAL)
   const [questionIndex, setQuestionIndex] = useState(-1)
@@ -93,6 +95,8 @@ export default function App() {
     setQuestionIndex(-1)
     setTranscriptResults([])
     setQuestionResults([])
+
+    setQuestions(generateQuestions)
   }
 
   const handleNextRound = useCallback(() => {
