@@ -20,7 +20,7 @@ const InitialStep = ({ handleNextStep }: { handleNextStep: Function }) => {
   if (!BrowserSpeechRecognition) {
     return (
       <main className="mx-auto h-full flex justify-center items-center">
-        <div className="text-center text-3xl font-bold pt-5 text-red-600">
+        <div className="text-center text-2xl text-red-500 dark:text-red-400">
           This browser does not support speech recognition.
           <br />
           Try using Google Chrome or Safari instead.

@@ -27,20 +27,19 @@ const PhraseSection = ({
 
   return (
     <div className="py-4 md:py-8 min-h-[65px] md:min-h-[100px]">
-      {!showAnswer || mostConfidentTranscript ? (
-        <div className="capitalize text-2xl">
-          {bestTranscriptParts.map((bestTranscriptPart, i) =>
-            phraseRegex.test(bestTranscriptPart) ? (
-              <span className="font-bold" key={i + bestTranscriptPart}>
-                {bestTranscriptPart}
-              </span>
-            ) : (
-              <span key={i + bestTranscriptPart}>{bestTranscriptPart}</span>
-            ),
-          )}
-        </div>
-      ) : (
+      {showAnswer && !mostConfidentTranscript ? (
         <div className="capitalize text-2xl">(You didn't say anything!)</div>
+      ) : (
+        <div className="capitalize text-2xl">
+          {bestTranscriptParts.map((bestTranscriptPart, i) => (
+            <span
+              className={showAnswer && phraseRegex.test(bestTranscriptPart) ? 'font-bold' : undefined}
+              key={i + bestTranscriptPart}
+            >
+              {bestTranscriptPart}
+            </span>
+          ))}
+        </div>
       )}
     </div>
   )
