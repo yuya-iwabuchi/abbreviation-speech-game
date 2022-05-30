@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors')
+const defaultTheme = require('tailwindcss/defaultTheme')
 
 const customColors = require('./src/colors')
 
@@ -13,8 +14,8 @@ module.exports = {
       gray: colors.gray,
     },
     fontFamily: {
-      sans: ['Barlow', 'sans-serif'],
-      serif: ['Roboto Slab', 'serif'],
+      sans: ['Barlow', ...defaultTheme.fontFamily.sans],
+      serif: ['Roboto Slab', ...defaultTheme.fontFamily.serif],
     },
     extend: {},
   },
