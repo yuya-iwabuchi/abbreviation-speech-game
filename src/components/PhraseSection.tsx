@@ -26,7 +26,7 @@ const PhraseSection = ({
   }, [showAnswer, mostConfidentTranscript, mostCorrectTranscript, phraseRegex])
 
   return (
-    <div className="py-4 md:py-8 min-h-[65px] md:min-h-[100px]">
+    <div className="my-2 md:my-6 min-h-[35px]">
       {showAnswer && !mostConfidentTranscript ? (
         <div className="capitalize text-2xl">(You didn't say anything!)</div>
       ) : (

@@ -168,12 +168,9 @@ export default function App() {
     <>
       <DebugInfo />
       <main className="App container mx-auto h-full px-5 md:px-7 py-8 text-center flex flex-col items-stretch">
-        <h1 className="font-bold text-3xl md:text-5xl text-transparent text-blue-800 dark:text-blue-200">
+        <h1 className="font-bold text-3xl md:text-5xl text-transparent text-blue-800 dark:text-blue-200 mb-3">
           Abbreviation Speech Game
         </h1>
-        <div className="text-lg pt-3">
-          Say the correct phrase of the abbreviation in the given time to win the rounds!
-        </div>
         {isGameProgressShown && (
           <Progress questions={questions} questionIndex={questionIndex} questionResults={questionResults} />
         )}
