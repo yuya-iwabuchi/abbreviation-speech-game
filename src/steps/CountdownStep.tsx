@@ -11,7 +11,7 @@ const CountDownStep = ({ handleNextStep }: { handleNextStep: Function }) => {
 
   return (
     <>
-      <div className="pt-4 md:pt-10 flex justify-center">
+      <div className="pt-4 md:pt-9 flex justify-center">
         <div
           className="font-serif font-bold text-5xl md:text-7xl"
           style={{ animation: `expand ${BEAT_MS}ms ease-in-out forwards ${STEP_BEATS_COUNT - 0.2}` }}

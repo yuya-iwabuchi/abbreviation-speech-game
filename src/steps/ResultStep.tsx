@@ -9,7 +9,7 @@ import AbbreviationSection from 'src/components/AbbreviationSection'
 import PhraseSection from 'src/components/PhraseSection'
 import BottomRightConfetti from 'src/components/BottomRightConfetti'
 
-const STEP_BEATS_COUNT = BEATS_PER_BLOCK * 200
+const STEP_BEATS_COUNT = BEATS_PER_BLOCK * 2
 
 const ResultStep = ({
   handleNextStep,
@@ -78,16 +78,16 @@ const ResultStep = ({
         question={question}
         showAnswer={!isProcessing}
       />
-      <div className="capitalize text-lg min-h-[30px] my-2 md:my-6">
+      <div className="capitalize text-regular md:text-xl min-h-[30px] my-1 md:my-6">
         {!isProcessing && (
           <>
             <span>Answer: </span>
-            <span className="font-semibold">{question.phrase}</span>
+            <span className="font-medium">{question.phrase}</span>
           </>
         )}
       </div>
-      <div className="font-bold text-3xl mt-2 md:mt-6">{resultText}</div>
-      {isGoingToNextRound || <div className="text-xl mt-3">{nextRoundText}</div>}
+      <div className="font-semibold text-xl md:text-3xl mt-1 md:mt-6">{resultText}</div>
+      {isGoingToNextRound && <div className="text-regular md:text-lg mt-3 md:mt-5">{nextRoundText}</div>}
       {!isProcessing && isCorrect && <BottomRightConfetti />}
     </>
   )
