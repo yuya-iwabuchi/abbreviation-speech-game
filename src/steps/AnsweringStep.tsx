@@ -29,16 +29,20 @@ const AnsweringStep = ({
   const [isRecognitionReady, setIsRecognitionReady] = useState(false)
 
   const recognition = useMemo(() => {
-    const grammar = `#JSGF V1.0; grammar phrase; public <phrase> = ${question.phrase};`
-    const speechRecognitionList = new BrowserSpeechGrammarList()
-    speechRecognitionList.addFromString(grammar, 1)
-
     const recognition = new BrowserSpeechRecognition()
-    recognition.grammars = speechRecognitionList
     recognition.continuous = true
     recognition.lang = 'en-US'
     recognition.interimResults = true
     recognition.maxAlternatives = 2
+
+    // Add grammar for answer hints if supported
+    if (BrowserSpeechGrammarList) {
+      const grammar = `#JSGF V1.0; grammar phrase; public <phrase> = ${question.phrase};`
+      const speechRecognitionList = new BrowserSpeechGrammarList()
+      speechRecognitionList.addFromString(grammar, 1)
+      recognition.grammars = speechRecognitionList
+    }
+
     return recognition
   }, [question.phrase])
 
