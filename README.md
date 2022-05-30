@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+# Abbreviation Speech Game
+
+Game to guess the abbreviation by speaking it out.
+
+This is quick mini game that I've created to test out few technologies I was interested in.
+
+---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
