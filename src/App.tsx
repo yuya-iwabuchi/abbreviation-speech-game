@@ -10,6 +10,7 @@ import ResultStep from 'src/steps/ResultStep'
 import Progress from 'src/components/GameProgress'
 import StopButton from 'src/components/StopButton'
 import GameEndStep from './steps/GameEndStep'
+import DebugInfo from './components/DebugInfo'
 
 function cartesianProduct<T>(...allEntries: T[][]): T[][] {
   return allEntries.reduce<T[][]>(
@@ -159,18 +160,21 @@ export default function App() {
   }
 
   return (
-    <main className="App container mx-auto h-full px-5 md:px-7 py-8 text-center flex flex-col items-stretch">
-      <h1 className="font-bold text-3xl md:text-5xl text-transparent text-blue-800 dark:text-blue-200">
-        Abbreviation Speech Game
-      </h1>
-      <div className="text-lg pt-3">
-        Say the correct phrase of the abbreviation in the given time to win the rounds!
-      </div>
-      {isGameProgressShown && (
-        <Progress questions={questions} questionIndex={questionIndex} questionResults={questionResults} />
-      )}
-      <section className="grow flex flex-col">{gameStepContent}</section>
-      {isStopButtonShown && <StopButton handleReset={handleReset} />}
-    </main>
+    <>
+      <DebugInfo />
+      <main className="App container mx-auto h-full px-5 md:px-7 py-8 text-center flex flex-col items-stretch">
+        <h1 className="font-bold text-3xl md:text-5xl text-transparent text-blue-800 dark:text-blue-200">
+          Abbreviation Speech Game
+        </h1>
+        <div className="text-lg pt-3">
+          Say the correct phrase of the abbreviation in the given time to win the rounds!
+        </div>
+        {isGameProgressShown && (
+          <Progress questions={questions} questionIndex={questionIndex} questionResults={questionResults} />
+        )}
+        <section className="grow flex flex-col">{gameStepContent}</section>
+        {isStopButtonShown && <StopButton handleReset={handleReset} />}
+      </main>
+    </>
   )
 }

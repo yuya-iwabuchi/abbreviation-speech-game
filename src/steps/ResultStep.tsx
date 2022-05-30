@@ -1,15 +1,13 @@
 import { useEffect, useMemo } from 'react'
-import Confetti from 'react-confetti'
-import useWindowSize from 'react-use/lib/useWindowSize'
 
 import { Abbreviation, AbbreviationWithResult, BEATS_PER_BLOCK } from 'src/constants'
-import colors from 'src/colors'
 
 import { useTimer } from 'src/hooks/useTimer'
 
 import TimerProgressBar from 'src/components/TimerProgressBar'
 import AbbreviationSection from 'src/components/AbbreviationSection'
 import PhraseSection from 'src/components/PhraseSection'
+import BottomRightConfetti from 'src/components/BottomRightConfetti'
 
 const STEP_BEATS_COUNT = BEATS_PER_BLOCK * 2
 
@@ -30,7 +28,6 @@ const ResultStep = ({
   phraseRegex: RegExp
   isLastQuestion: boolean
 }) => {
-  const { width, height } = useWindowSize()
   const [beatsFired] = useTimer(handleNextStep, STEP_BEATS_COUNT)
 
   const isCorrect = useMemo(() => !!mostCorrectTranscript, [mostCorrectTranscript])
@@ -91,20 +88,7 @@ const ResultStep = ({
       </div>
       <div className="font-bold text-3xl pt-2 md:pt-3">{resultText}</div>
       {isGoingToNextRound && <div className="text-xl pt-3">{nextRoundText}</div>}
-      {!isProcessing && isCorrect && (
-        <>
-          <Confetti
-            width={width}
-            height={height}
-            confettiSource={{ x: width, y: height, w: 0, h: 0 }}
-            initialVelocityX={{ min: -(width / 80), max: 1 }}
-            initialVelocityY={{ min: -(height / 60), max: -1 }}
-            numberOfPieces={100}
-            tweenDuration={50}
-            recycle={false}
-          />
-        </>
-      )}
+      {!isProcessing && isCorrect && <BottomRightConfetti />}
     </>
   )
 }

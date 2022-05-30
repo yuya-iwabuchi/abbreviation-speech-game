@@ -1,5 +1,3 @@
-import { useMemo } from 'react'
-
 import { Abbreviation, AbbreviationWithResult } from 'src/constants'
 
 const GameProgress = ({
