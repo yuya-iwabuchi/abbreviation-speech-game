@@ -20,13 +20,19 @@ const InitialStep = ({ handleNextStep }: { handleNextStep: Function }) => {
   // https://chromium.googlesource.com/chromium/src.git/+/HEAD/docs/ios/user_agent.md
   const isIosChrome = useMemo(() => window.navigator.userAgent.match(/CriOS/i), [])
 
+  // https://bugs.webkit.org/show_bug.cgi?id=225298
+  const isMacosSafari = useMemo(
+    () => window.navigator.userAgent.match(/Macintosh/i) && window.navigator.userAgent.match(/Safari/i),
+    [],
+  )
+
   if (!BrowserSpeechRecognition || isIosChrome) {
     return (
       <main className="mx-auto h-full flex justify-center items-center">
         <div className="text-center font-medium text-xl text-red-500 dark:text-red-400 mb-10">
           This browser does not support speech recognition.
           <br />
-          Try using Google Chrome for Desktop, Chrome for Android, or Safari for iOS instead.
+          Try using Chrome for Desktop, Chrome for Android, or Safari for iOS instead.
         </div>
       </main>
     )
@@ -42,7 +48,14 @@ const InitialStep = ({ handleNextStep }: { handleNextStep: Function }) => {
         >
           START
         </button>
-        <div className="font-red-700 font-semibold pt-2">{isPermissionError && 'Permission was not granted.'}</div>
+        {isMacosSafari && (
+          <div className="text-lg break-normal pt-3">
+            <span>On Safari Desktop, you need to enable Dictation from </span>
+            <span className="font-medium whitespace-nowrap">{'System Preference > Keyboard > Dictation'}</span>
+            <span> to use the speech recognition.</span>
+          </div>
+        )}
+        <div className="font-red-700 font-semibold pt-3">{isPermissionError && 'Permission was not granted.'}</div>
       </div>
     </>
   )

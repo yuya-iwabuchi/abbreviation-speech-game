@@ -5,7 +5,7 @@ const DebugInfo = () => {
   useEffect(() => {
     const gitInfo = getGitInfo()
     console.debug(`git commit hash: ${gitInfo?.commit?.shortHash}`)
-  })
+  }, [])
 
   return null
 }

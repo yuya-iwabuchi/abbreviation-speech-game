@@ -167,7 +167,7 @@ export default function App() {
   return (
     <>
       <DebugInfo />
-      <main className="App container mx-auto h-full p-5 md:p-7 text-center flex flex-col items-stretch">
+      <main className="container max-w-3xl mx-auto h-full p-5 md:p-7 text-center flex flex-col items-stretch">
         <h1 className="font-bold text-3xl md:text-5xl text-transparent text-blue-800 dark:text-blue-200 mb-3">
           Abbreviation Speech Game
         </h1>
