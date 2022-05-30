@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 
 import { BrowserSpeechRecognition } from 'src/web-speech-api'
 
@@ -17,13 +17,16 @@ const InitialStep = ({ handleNextStep }: { handleNextStep: Function }) => {
     }
   }
 
-  if (!BrowserSpeechRecognition) {
+  // https://chromium.googlesource.com/chromium/src.git/+/HEAD/docs/ios/user_agent.md
+  const isIosChrome = useMemo(() => window.navigator.userAgent.match(/CriOS/i), [])
+
+  if (!BrowserSpeechRecognition || isIosChrome) {
     return (
       <main className="mx-auto h-full flex justify-center items-center">
-        <div className="text-center font-semibold text-xl text-red-500 dark:text-red-400">
+        <div className="text-center font-medium text-xl text-red-500 dark:text-red-400 mb-10">
           This browser does not support speech recognition.
           <br />
-          Try using Google Chrome or Safari instead.
+          Try using Google Chrome for Desktop, Chrome for Android, or Safari for iOS instead.
         </div>
       </main>
     )
