@@ -43,7 +43,7 @@ const GameEndStep = ({
         </button>
       </div>
 
-      {correctRatio >= 1 && <BottomRightConfetti />}
+      {correctRatio >= 0.8 && <BottomRightConfetti />}
     </>
   )
 }

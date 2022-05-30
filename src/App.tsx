@@ -12,6 +12,8 @@ import StopButton from 'src/components/StopButton'
 import GameEndStep from './steps/GameEndStep'
 import DebugInfo from './components/DebugInfo'
 
+const QUESTIONS_COUNT = 5
+
 function cartesianProduct<T>(...allEntries: T[][]): T[][] {
   return allEntries.reduce<T[][]>(
     (results, entries) =>
@@ -36,7 +38,7 @@ function shuffle<T>(array: T[]): T[] {
 }
 
 export default function App() {
-  const [questions] = useState(() => shuffle(TECH_ABBREVIATIONS).slice(0, 5))
+  const [questions] = useState(() => shuffle(TECH_ABBREVIATIONS).slice(0, QUESTIONS_COUNT))
 
   const [gameStep, setGameStep] = useState<GameStep>(GameStep.INITIAL)
   const [questionIndex, setQuestionIndex] = useState(-1)
@@ -63,7 +65,6 @@ export default function App() {
         }
         return [...acc, alternatives]
       }, [])
-    console.log({ transcriptResults, filteredTranscriptResults })
 
     const allCombinations = cartesianProduct(...filteredTranscriptResults)
       .map((combination) => ({
@@ -81,7 +82,7 @@ export default function App() {
   const phraseRegex = useMemo(() => new RegExp(`(${question?.phrase})`, 'gi'), [question?.phrase])
   const mostCorrectTranscript = useMemo(
     () =>
-      sortedTranscripts?.find(({ transcript }) => transcript.toLowerCase().includes(question.phrase))?.transcript ??
+      sortedTranscripts?.find(({ transcript }) => transcript.toLowerCase().includes(question?.phrase))?.transcript ??
       null,
     [sortedTranscripts, question],
   )

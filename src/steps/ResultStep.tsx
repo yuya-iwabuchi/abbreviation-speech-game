@@ -31,7 +31,7 @@ const ResultStep = ({
   const [beatsFired] = useTimer(handleNextStep, STEP_BEATS_COUNT)
 
   const isCorrect = useMemo(() => !!mostCorrectTranscript, [mostCorrectTranscript])
-  const isProcessing = useMemo(() => beatsFired <= BEATS_PER_BLOCK / 2, [beatsFired])
+  const isProcessing = useMemo(() => beatsFired <= BEATS_PER_BLOCK / 4, [beatsFired])
   const isGoingToNextRound = useMemo(() => beatsFired >= STEP_BEATS_COUNT - BEATS_PER_BLOCK / 2, [beatsFired])
 
   useEffect(() => {

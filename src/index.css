@@ -30,21 +30,27 @@
   @keyframes width {
     0% {
       width: 0%;
-      opacity: 0;
-    }
-    10% {
-      width: 10%;
-      opacity: 1;
-    }
-    95% {
-      width: 95%;
-      opacity: 1;
     }
     100% {
       width: 100%;
+    }
+  }
+
+  @keyframes opacity {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    95% {
+      opacity: 1;
+    }
+    100% {
       opacity: 0;
     }
   }
+
   @keyframes expand {
     0%,
     100% {
