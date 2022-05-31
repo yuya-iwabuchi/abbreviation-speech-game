@@ -9,6 +9,7 @@ import TimerProgressBar from 'src/components/TimerProgressBar'
 import AbbreviationSection from 'src/components/AbbreviationSection'
 import PhraseSection from 'src/components/PhraseSection'
 import BottomRightConfetti from 'src/components/BottomRightConfetti'
+import LoadingIcon from 'src/components/LoadingIcon'
 
 const STEP_BEATS_COUNT = BEATS_PER_BLOCK * 2
 
@@ -50,15 +51,6 @@ const ResultStep = ({
     ])
   }, [isProcessing, setQuestionResults, question, mostCorrectTranscript, mostConfidentTranscript, isCorrect])
 
-  const resultText = useMemo(() => {
-    if (isProcessing) {
-      return 'Processing...'
-    } else if (isCorrect) {
-      return 'Correct!'
-    }
-    return 'Oops!'
-  }, [isProcessing, isCorrect])
-
   const nextRoundText = useMemo(() => {
     if (isLastQuestion) {
       return "That's it!"
@@ -87,7 +79,13 @@ const ResultStep = ({
           </>
         )}
       </div>
-      <div className="font-semibold text-xl md:text-3xl mt-1 md:mt-6">{resultText}</div>
+      <div className="flex justify-center items-center mt-1 md:mt-6">
+        {isProcessing ? (
+          <LoadingIcon />
+        ) : (
+          <div className="font-semibold text-xl md:text-3xl ">{isCorrect ? 'Correct!' : 'Oops!'}</div>
+        )}
+      </div>
       {isGoingToNextRound && <div className="text-regular md:text-lg mt-3 md:mt-5">{nextRoundText}</div>}
       {!isProcessing && isCorrect && <BottomRightConfetti />}
     </>
