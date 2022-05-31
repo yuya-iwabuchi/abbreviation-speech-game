@@ -20,11 +20,11 @@ const GameProgress = ({
         } else {
           switch (questionResults.at(index)?.isCorrect) {
             case true:
-              bgColor = 'bg-blue-300 dark:bg-blue-500'
+              bgColor = 'bg-blue-400 dark:bg-blue-500'
               content = '✓'
               break
             case false:
-              bgColor = 'bg-red-300 dark:bg-red-500'
+              bgColor = 'bg-red-400 dark:bg-red-500'
               content = '✕'
               break
             default:
