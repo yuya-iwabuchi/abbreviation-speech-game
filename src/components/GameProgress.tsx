@@ -34,8 +34,11 @@ const GameProgress = ({
           }
         }
         return (
-          <div key={question.abbreviation} className={`aspect-square h-6 m-1 rounded font-bold text-white ${bgColor}`}>
-            <div>{content}</div>
+          <div
+            key={question.abbreviation}
+            className={`aspect-square h-6 w-6 m-1 rounded flex justify-center items-center ${bgColor}`}
+          >
+            <div className="font-bold text-white">{content}</div>
           </div>
         )
       })}
