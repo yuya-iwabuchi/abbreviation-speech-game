@@ -8,7 +8,7 @@ const CategorySelect = ({
   setCategory: React.Dispatch<React.SetStateAction<Category>>
 }) => {
   return (
-    <div className="flex justify-center flex-wrap mb-5 md:mb-10">
+    <div className="flex justify-center flex-wrap mb-10">
       {CATEGORIES.map((cat) => (
         <button
           key={cat.key}
