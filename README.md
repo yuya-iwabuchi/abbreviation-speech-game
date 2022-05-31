@@ -2,7 +2,7 @@
 
 Game to guess the abbreviation by speaking it out.
 
-This is quick mini game that I've created to test out few technologies I was interested in.
+This is quick nerdy mini game that I've created to test out few frontend technologies I was interested in in learning hands on.
 
 ---
 
