@@ -57,6 +57,40 @@ const InitialStep = ({ handleNextStep }: { handleNextStep: Function }) => {
         )}
         <div className="font-red-700 font-semibold pt-3">{isPermissionError && 'Permission was not granted.'}</div>
       </div>
+      <div className="mb-5">
+        <div>
+          <a
+            className="font-medium underline transition hover:brightness-90"
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Web Speech API
+          </a>
+          <span> is currently in experimental state and are </span>
+          <a
+            className="font-medium underline transition hover:brightness-90"
+            href="https://caniuse.com/speech-recognition"
+            target="_blank"
+            rel="noreferrer"
+          >
+            not available on all platforms/browsers
+          </a>
+          <span>.</span>
+        </div>
+        <div className="mt-2">
+          <span>For best experience, please use </span>
+          <a
+            className="font-medium underline transition hover:brightness-90"
+            href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition#browser_compatibility"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Chrome on Windows/MacOS/Android
+          </a>
+          <span>.</span>
+        </div>
+      </div>
     </>
   )
 }
