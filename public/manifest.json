@@ -1,6 +1,7 @@
 {
   "short_name": "Abbreviation Speech Game",
-  "name": "Game to guess the abbreviation by speaking it out.",
+  "name": "Abbreviation Speech Game",
+  "description": "Game to guess the abbreviation by speaking it out.",
   "icons": [
     {
       "src": "favicon.ico",
