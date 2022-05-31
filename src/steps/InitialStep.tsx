@@ -47,7 +47,7 @@ const InitialStep = ({
             <CategorySelect category={category} setCategory={setCategory} />
             <button
               onClick={handleStartGame}
-              className="bg-blue-300 dark:bg-blue-600 text-blue-800 dark:text-blue-100 text-4xl md:text-6xl font-semibold px-6 md:px-10 py-3 md:py-5 rounded-full transition ease-in-out hover:brightness-90 hover:scale-110"
+              className="bg-blue-300 dark:bg-blue-600 text-blue-800 dark:text-blue-100 text-4xl md:text-6xl font-semibold px-6 md:px-10 py-3 md:py-5 rounded-full transition ease-in-out hover:scale-110"
             >
               START
             </button>

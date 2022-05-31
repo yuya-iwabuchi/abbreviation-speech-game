@@ -37,7 +37,7 @@ const GameEndStep = ({
       <div className="grow flex flex-col justify-center items-center">
         <button
           onClick={handleReset}
-          className="bg-blue-300 dark:bg-blue-600 text-blue-800 dark:text-blue-100 text-3xl font-semibold px-10 py-5 rounded-full transition ease-in-out hover:brightness-90 hover:scale-110"
+          className="bg-blue-300 dark:bg-blue-600 text-blue-800 dark:text-blue-100 text-3xl font-semibold px-10 py-5 rounded-full transition ease-in-out hover:scale-110"
         >
           FINISH
         </button>

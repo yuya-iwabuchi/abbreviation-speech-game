@@ -13,7 +13,7 @@ const CategorySelect = ({
         <button
           key={cat.key}
           className={`m-1 md:m-2 py-1 px-3 font-medium rounded-full transition ${
-            cat.key === category.key ? 'bg-yellow-600 text-white' : ''
+            cat.key === category.key ? 'bg-yellow-600 text-white cursor-default' : 'hover:scale-110'
           }`}
           onClick={() => setCategory(cat)}
         >
