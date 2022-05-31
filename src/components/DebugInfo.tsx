@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { memo, useEffect } from 'react'
 import getGitInfo from 'react-git-info/macro'
 
 const DebugInfo = () => {
@@ -10,4 +10,4 @@ const DebugInfo = () => {
   return null
 }
 
-export default DebugInfo
+export default memo(DebugInfo)

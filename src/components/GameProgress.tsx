@@ -1,4 +1,4 @@
-import { Abbreviation, AbbreviationWithResult } from 'src/constants'
+import { Abbreviation, AbbreviationWithResult } from 'src/abbreviations'
 
 const GameProgress = ({
   questions,

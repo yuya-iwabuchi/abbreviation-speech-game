@@ -1,6 +1,7 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 
-import { AbbreviationWithResult, GameStep, TECH_ABBREVIATIONS } from 'src/constants'
+import { GameStep } from 'src/constants'
+import { AbbreviationWithResult, CATEGORIES, Category } from 'src/abbreviations'
 
 import InitialStep from 'src/steps/InitialStep'
 import CountDownStep from 'src/steps/CountdownStep'
@@ -37,10 +38,13 @@ function shuffle<T>(array: T[]): T[] {
   return array
 }
 
-const generateQuestions = () => shuffle(TECH_ABBREVIATIONS).slice(0, QUESTIONS_COUNT)
+function generateQuestions<T>(questions: T[]): T[] {
+  return shuffle(questions).slice(0, QUESTIONS_COUNT)
+}
 
 export default function App() {
-  const [questions, setQuestions] = useState(generateQuestions)
+  const [category, setCategory] = useState<Category>(CATEGORIES[0])
+  const [questions, setQuestions] = useState(generateQuestions(category.abbreviations))
 
   const [gameStep, setGameStep] = useState<GameStep>(GameStep.INITIAL)
   const [questionIndex, setQuestionIndex] = useState(-1)
@@ -89,15 +93,19 @@ export default function App() {
     [sortedTranscripts, question],
   )
 
-  const handleReset = () => {
+  useEffect(() => {
+    setQuestions(generateQuestions(category.abbreviations))
+  }, [category])
+
+  const handleReset = useCallback(() => {
     setGameStep(GameStep.INITIAL)
 
     setQuestionIndex(-1)
     setTranscriptResults([])
     setQuestionResults([])
 
-    setQuestions(generateQuestions)
-  }
+    setQuestions(generateQuestions(category.abbreviations))
+  }, [category])
 
   const handleNextRound = useCallback(() => {
     setTranscriptResults([])
@@ -122,7 +130,7 @@ export default function App() {
   let isStopButtonShown = false
   switch (gameStep) {
     case GameStep.INITIAL:
-      gameStepContent = <InitialStep handleNextStep={handleNextRound} />
+      gameStepContent = <InitialStep handleNextStep={handleNextRound} category={category} setCategory={setCategory} />
       break
     case GameStep.COUNTDOWN:
       isGameProgressShown = true

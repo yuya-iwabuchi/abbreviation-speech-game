@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from 'react'
 
-import { Abbreviation, AbbreviationWithResult, BEATS_PER_BLOCK } from 'src/constants'
+import { BEATS_PER_BLOCK } from 'src/constants'
+import { Abbreviation, AbbreviationWithResult } from 'src/abbreviations'
 
 import { useTimer } from 'src/hooks/useTimer'
 

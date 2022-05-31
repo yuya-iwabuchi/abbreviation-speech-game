@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 
-import { Abbreviation, BEATS_PER_BLOCK, BEAT_MS } from 'src/constants'
+import { BEATS_PER_BLOCK, BEAT_MS } from 'src/constants'
+import { Abbreviation } from 'src/abbreviations'
 import { useTimer } from 'src/hooks/useTimer'
 import { BrowserSpeechRecognition, BrowserSpeechGrammarList } from 'src/web-speech-api'
 
@@ -48,7 +49,7 @@ const AnsweringStep = ({
 
   useEffect(() => {
     const handleSpeechResult = (event: SpeechRecognitionEvent) => {
-      console.log('result', event)
+      console.log('transcript', event)
       setTranscriptResults(Array.from(event.results))
     }
     console.log('addEventListener')

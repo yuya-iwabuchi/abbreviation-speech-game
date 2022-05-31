@@ -1,8 +1,18 @@
-import React, { useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
+import CategorySelect from 'src/components/CategorySelect'
 
 import { BrowserSpeechRecognition } from 'src/web-speech-api'
+import { Category } from 'src/abbreviations'
 
-const InitialStep = ({ handleNextStep }: { handleNextStep: Function }) => {
+const InitialStep = ({
+  handleNextStep,
+  category,
+  setCategory,
+}: {
+  handleNextStep: Function
+  category: Category
+  setCategory: React.Dispatch<React.SetStateAction<Category>>
+}) => {
   const [isPermissionError, setIsPermissionError] = useState(false)
 
   const handleStartGame = async () => {
@@ -32,6 +42,7 @@ const InitialStep = ({ handleNextStep }: { handleNextStep: Function }) => {
       <div className="grow flex flex-col justify-center items-center">
         {BrowserSpeechRecognition && !isIosChrome ? (
           <>
+            <CategorySelect category={category} setCategory={setCategory} />
             <button
               onClick={handleStartGame}
               className="bg-blue-300 dark:bg-blue-600 text-blue-800 dark:text-blue-100 text-6xl font-semibold px-10 py-5 rounded-full transition ease-in-out hover:brightness-90 hover:scale-110"

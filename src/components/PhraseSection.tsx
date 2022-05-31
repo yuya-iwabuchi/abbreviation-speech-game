@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 
-import { Abbreviation } from 'src/constants'
+import { Abbreviation } from 'src/abbreviations'
 
 const PhraseSection = ({
   mostConfidentTranscript,
