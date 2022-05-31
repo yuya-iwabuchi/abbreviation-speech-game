@@ -3,6 +3,7 @@ import CategorySelect from 'src/components/CategorySelect'
 
 import { BrowserSpeechRecognition } from 'src/web-speech-api'
 import { Category } from 'src/abbreviations'
+import DebugInfo from 'src/components/DebugInfo'
 
 const InitialStep = ({
   handleNextStep,
@@ -38,6 +39,7 @@ const InitialStep = ({
 
   return (
     <>
+      <DebugInfo />
       <div className="text-lg">Say the correct phrase of the abbreviation in the given time to win the rounds!</div>
       <div className="grow flex flex-col justify-center items-center">
         {BrowserSpeechRecognition && !isIosChrome ? (

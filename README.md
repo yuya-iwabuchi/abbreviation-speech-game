@@ -1,8 +1,15 @@
 # Abbreviation Speech Game
 
-Game to guess the abbreviation by speaking it out.
+<img src="public/logo192.png" data-canonical-src="public/logo192.png" width="40" height="40" />
 
 This is quick nerdy mini game that I've created to test out few frontend technologies I was interested in in learning hands on.
+
+Goal of the game is to speak out the abbreviation's original term correctly within the given time.
+It leverages the [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) to perform live text-to-speech translation.
+
+Due to the [limitation with it's Speech Recognition capability](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition#browser_compatibility), the game will not function properly on all platforms/devices.
+
+## [Try the game now!](https://abbreviation-speech-game.vercel.app/)
 
 ---
 

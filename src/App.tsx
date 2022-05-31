@@ -11,7 +11,6 @@ import ResultStep from 'src/steps/ResultStep'
 import Progress from 'src/components/GameProgress'
 import StopButton from 'src/components/StopButton'
 import GameEndStep from './steps/GameEndStep'
-import DebugInfo from './components/DebugInfo'
 
 const QUESTIONS_COUNT = 5
 
@@ -173,18 +172,15 @@ export default function App() {
   }
 
   return (
-    <>
-      <DebugInfo />
-      <main className="container max-w-3xl mx-auto h-full p-5 md:p-7 text-center flex flex-col items-stretch">
-        <h1 className="font-bold text-3xl md:text-5xl text-transparent text-blue-800 dark:text-blue-200 mb-3">
-          Abbreviation Speech Game
-        </h1>
-        {isGameProgressShown && (
-          <Progress questions={questions} questionIndex={questionIndex} questionResults={questionResults} />
-        )}
-        <section className="grow flex flex-col">{gameStepContent}</section>
-        {isStopButtonShown && <StopButton handleReset={handleReset} />}
-      </main>
-    </>
+    <main className="container max-w-3xl mx-auto h-full p-5 md:p-7 text-center flex flex-col items-stretch">
+      <h1 className="font-bold text-3xl md:text-5xl text-transparent text-blue-800 dark:text-blue-200 mb-3">
+        Abbreviation Speech Game
+      </h1>
+      {isGameProgressShown && (
+        <Progress questions={questions} questionIndex={questionIndex} questionResults={questionResults} />
+      )}
+      <section className="grow flex flex-col">{gameStepContent}</section>
+      {isStopButtonShown && <StopButton handleReset={handleReset} />}
+    </main>
   )
 }

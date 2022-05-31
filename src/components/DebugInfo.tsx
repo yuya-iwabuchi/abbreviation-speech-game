@@ -1,13 +1,17 @@
-import { memo, useEffect } from 'react'
+import { useMemo } from 'react'
 import getGitInfo from 'react-git-info/macro'
 
 const DebugInfo = () => {
-  useEffect(() => {
+  const shortHash = useMemo(() => {
     const gitInfo = getGitInfo()
-    console.debug(`git commit hash: ${gitInfo?.commit?.shortHash}`)
+    return gitInfo?.commit?.shortHash
   }, [])
 
-  return null
+  return (
+    <div className="fixed bottom-1 left-1">
+      <code className="text-xs">{shortHash}</code>
+    </div>
+  )
 }
 
-export default memo(DebugInfo)
+export default DebugInfo
