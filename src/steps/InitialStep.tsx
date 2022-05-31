@@ -55,7 +55,7 @@ const InitialStep = ({ handleNextStep }: { handleNextStep: Function }) => {
           </div>
         )}
       </div>
-      <div className="mb-5">
+      <div className="mb-5 leading-tight md:leading-normal">
         <div>
           <a
             className="font-medium underline transition hover:brightness-90"
