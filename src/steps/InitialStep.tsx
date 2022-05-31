@@ -95,7 +95,7 @@ const InitialStep = ({
             target="_blank"
             rel="noreferrer"
           >
-            Chrome on Windows/MacOS/Android
+            Chrome on Windows/macOS/Android
           </a>
           <span>.</span>
         </div>
