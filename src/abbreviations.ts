@@ -202,7 +202,7 @@ export const SLANG_ABBREVIATIONS: Abbreviation[] = [
   { abbreviation: 'TTYL', phrase: 'talk to you later' },
 ]
 
-export const FINANCE_ABBREVIATIONS: Abbreviation[] = [
+export const BUSINESS_ABBREVIATIONS: Abbreviation[] = [
   { abbreviation: 'GDP', phrase: 'gross domestic product' },
   { abbreviation: 'IMF', phrase: 'international monetary fund' },
   { abbreviation: 'IPO', phrase: 'initial public offering' },
@@ -221,6 +221,9 @@ export const FINANCE_ABBREVIATIONS: Abbreviation[] = [
   { abbreviation: 'ALM', phrase: 'asset liability management' },
   { abbreviation: 'CAR', phrase: 'capital adequacy ratio' },
   { abbreviation: 'AML', phrase: 'anti money laundering' },
+  { abbreviation: 'CEO', phrase: 'chief executive officer' },
+  { abbreviation: 'CFO', phrase: 'chief financial officer' },
+  { abbreviation: 'KPI', phrase: 'key performance indicator' },
 ]
 
 export interface Category {
@@ -256,8 +259,8 @@ export const CATEGORIES: Category[] = [
     abbreviations: SLANG_ABBREVIATIONS,
   },
   {
-    key: 'finance',
-    label: 'Finance',
-    abbreviations: FINANCE_ABBREVIATIONS,
+    key: 'business',
+    label: 'Business',
+    abbreviations: BUSINESS_ABBREVIATIONS,
   },
 ]
