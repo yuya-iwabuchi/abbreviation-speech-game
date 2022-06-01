@@ -2,10 +2,11 @@
 
 This is nerdy mini game that I've created.
 
-Goal of the game is to speak out the abbreviation's original term correctly within the given time.
+Goal of the game is to speak out the abbreviation's original term correctly within the given time.\
 It leverages the [Web Speech API's Speech Recognition](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API) to perform live text-to-speech translation.
 
-Due to [it's limitation](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition#browser_compatibility), the game will not function properly on all platforms/devices. At this time (2022-06), it is confirmed to work on:
+Due to [it's limitation](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition#browser_compatibility), the game will not function properly on all platforms/devices.\
+At this time (2022-06), it is confirmed to work on:
 
 - Google Chrome on Windows
 - Google Chrome on macOS
