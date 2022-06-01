@@ -26,11 +26,11 @@ const PhraseSection = ({
   }, [showAnswer, mostConfidentTranscript, mostCorrectTranscript, phraseRegex])
 
   return (
-    <div className="my-1 md:my-6 min-h-[35px]">
+    <div className="my-4 min-h-[35px]">
       {showAnswer && !mostConfidentTranscript ? (
-        <div className="capitalize text-xl md:text-2xl">(You didn't say anything!)</div>
+        <div className="capitalize text-2xl">(You didn't say anything!)</div>
       ) : (
-        <div className="capitalize text-xl md:text-2xl">
+        <div className="capitalize text-2xl">
           {bestTranscriptParts.map((bestTranscriptPart, i) => (
             <span
               className={showAnswer && phraseRegex.test(bestTranscriptPart) ? 'font-bold' : undefined}

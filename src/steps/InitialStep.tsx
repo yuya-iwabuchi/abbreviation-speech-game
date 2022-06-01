@@ -41,13 +41,13 @@ const InitialStep = ({
     <>
       <DebugInfo />
       <div className="text-lg">Say the correct phrase of the abbreviation in the given time to win the rounds!</div>
-      <div className="grow flex flex-col justify-center items-center">
+      <div className="grow flex flex-col justify-center items-center mt-2 mb-8">
         {BrowserSpeechRecognition && !isIosChrome ? (
           <>
             <CategorySelect category={category} setCategory={setCategory} />
             <button
               onClick={handleStartGame}
-              className="bg-blue-300 dark:bg-blue-600 text-blue-800 dark:text-blue-100 text-4xl md:text-6xl font-semibold px-6 md:px-10 py-3 md:py-5 rounded-full transition ease-in-out hover:scale-110"
+              className="bg-blue-300 dark:bg-blue-600 text-blue-800 dark:text-blue-100 text-6xl font-semibold px-10 py-5 rounded-full transition ease-in-out hover:scale-110"
             >
               START
             </button>
@@ -68,7 +68,7 @@ const InitialStep = ({
           </div>
         )}
       </div>
-      <div className="mb-5 leading-tight md:leading-normal">
+      <div className="mb-5 leading-tight">
         <div>
           <a
             className="font-medium underline transition hover:brightness-90"

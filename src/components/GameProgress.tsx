@@ -10,7 +10,7 @@ const GameProgress = ({
   questionResults: AbbreviationWithResult[]
 }) => {
   return (
-    <div className="flex flex-wrap justify-center my-1 md:my-3">
+    <div className="flex flex-wrap justify-center my-3">
       {questions.map((question, index) => {
         let bgColor: string
         let content: string
@@ -38,7 +38,7 @@ const GameProgress = ({
             key={question.abbreviation}
             className={`aspect-square h-6 w-6 m-1 rounded flex justify-center items-center ${bgColor}`}
           >
-            <div className="font-bold text-white">{content}</div>
+            <div className="font-bold text-white leading-normal">{content}</div>
           </div>
         )
       })}

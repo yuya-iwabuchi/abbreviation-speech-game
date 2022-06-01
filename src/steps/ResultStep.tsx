@@ -71,7 +71,7 @@ const ResultStep = ({
         question={question}
         showAnswer={!isProcessing}
       />
-      <div className="capitalize text-regular md:text-xl min-h-[30px] my-1 md:my-6">
+      <div className="capitalize text-xl min-h-[30px] my-4">
         {!isProcessing && (
           <>
             <span>Answer: </span>
@@ -79,14 +79,14 @@ const ResultStep = ({
           </>
         )}
       </div>
-      <div className="flex justify-center items-center mt-1 md:mt-6">
+      <div className="flex justify-center items-center mt-4">
         {isProcessing ? (
           <LoadingIcon />
         ) : (
-          <div className="font-semibold text-xl md:text-3xl ">{isCorrect ? 'Correct!' : 'Oops!'}</div>
+          <div className="font-semibold text-3xl ">{isCorrect ? 'Correct!' : 'Oops!'}</div>
         )}
       </div>
-      {isGoingToNextRound && <div className="text-regular md:text-lg mt-3 md:mt-5">{nextRoundText}</div>}
+      {isGoingToNextRound && <div className="text-lg mt-3">{nextRoundText}</div>}
       {!isProcessing && isCorrect && <BottomRightConfetti />}
     </>
   )

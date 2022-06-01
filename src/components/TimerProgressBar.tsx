@@ -2,7 +2,7 @@ import { BEAT_MS } from 'src/constants'
 
 const TimerProgressBar = ({ beatsCount }: { beatsCount: number | null }) => {
   return (
-    <div className="fixed top-0 left-0 w-screen">
+    <div className="absolute top-0 left-0 w-screen">
       {beatsCount && (
         <div
           className="w-full bg-blue-200 dark:bg-gray-600 h-1"

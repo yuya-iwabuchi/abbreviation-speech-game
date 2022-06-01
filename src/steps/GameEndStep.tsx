@@ -30,10 +30,10 @@ const GameEndStep = ({
 
   return (
     <>
-      <div className="font-serif font-bold text-5xl md:text-7xl py-4 md:py-9">
+      <div className="font-serif font-bold text-7xl py-9">
         {correctCount} / {questionsCount}
       </div>
-      <div className="font-semibold text-xl md:text-3xl pb-5 md:pb-10">{endText}</div>
+      <div className="font-semibold text-3xl pb-10">{endText}</div>
       <div className="grow flex flex-col justify-center items-center">
         <button
           onClick={handleReset}
