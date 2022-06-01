@@ -181,7 +181,7 @@ export const SLANG_ABBREVIATIONS: Abbreviation[] = [
   { abbreviation: 'FWIW', phrase: "for what it's worth" },
   { abbreviation: 'NVM', phrase: 'nevermind' },
   { abbreviation: 'TBH', phrase: 'to be honest' },
-  { abbreviation: 'SMH', phrase: 'shaking my head' },
+  // { abbreviation: 'SMH', phrase: 'shaking my head' },
   { abbreviation: 'YOLO', phrase: 'you only live once' },
   { abbreviation: 'BRB', phrase: 'be right back' },
   { abbreviation: 'DM', phrase: 'direct message' },
@@ -200,6 +200,8 @@ export const SLANG_ABBREVIATIONS: Abbreviation[] = [
   { abbreviation: 'NBD', phrase: 'not big deal' },
   { abbreviation: 'TMI', phrase: 'too much information' },
   { abbreviation: 'TTYL', phrase: 'talk to you later' },
+  { abbreviation: 'TGIF', phrase: "thank god it's friday" },
+  { abbreviation: 'IKR', phrase: 'i know right' },
 ]
 
 export const BUSINESS_ABBREVIATIONS: Abbreviation[] = [

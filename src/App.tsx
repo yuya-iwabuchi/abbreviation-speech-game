@@ -172,7 +172,7 @@ export default function App() {
   }
 
   return (
-    <main className="container max-w-3xl mx-auto h-full pt-7 px-7 pb-5 text-center flex flex-col items-stretch">
+    <main className="container max-w-3xl mx-auto h-full py-5 px-7 text-center flex flex-col items-stretch">
       <h1 className="font-bold text-5xl text-transparent text-blue-800 dark:text-blue-200 mb-3">
         Abbreviation Speech Game
       </h1>
