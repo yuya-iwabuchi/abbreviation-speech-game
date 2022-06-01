@@ -41,7 +41,6 @@ export const DEVELOPER_ABBREVIATIONS: Abbreviation[] = [
   { abbreviation: 'CORS', phrase: 'cross origin resource sharing' },
   { abbreviation: 'FE', phrase: 'front end' },
   { abbreviation: 'BE', phrase: 'back end' },
-  { abbreviation: 'B2B', phrase: 'business to business' },
   { abbreviation: 'ACID', phrase: 'atomicity consistency isolation durability' },
   { abbreviation: 'API', phrase: 'application programming interface' },
   { abbreviation: 'CRUD', phrase: 'create read update delete' },
@@ -80,7 +79,6 @@ export const DEVELOPER_ABBREVIATIONS: Abbreviation[] = [
   { abbreviation: 'AES', phrase: 'advanced encryption standard' },
   { abbreviation: 'VM', phrase: 'virtual machine' },
   { abbreviation: 'JPEG', phrase: 'joint photographic experts group' },
-  { abbreviation: 'ROM', phrase: 'read only memory' },
   { abbreviation: 'NTP', phrase: 'network time protocol' },
   { abbreviation: 'LTE', phrase: 'long term evolution' },
   { abbreviation: 'DBMS', phrase: 'database management service' },
@@ -116,6 +114,7 @@ export const COMPUTING_ABBREVIATIONS: Abbreviation[] = [
   { abbreviation: 'HDMI', phrase: 'high definition multimedia interface' },
   { abbreviation: 'DRM', phrase: 'digital rights management' },
   { abbreviation: 'GPS', phrase: 'global positioning system' },
+  { abbreviation: 'ROM', phrase: 'read only memory' },
 ]
 
 export const AWS_ABBREVIATIONS: Abbreviation[] = [
