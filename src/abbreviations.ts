@@ -70,7 +70,6 @@ export const DEVELOPER_ABBREVIATIONS: Abbreviation[] = [
   { abbreviation: 'CLI', phrase: 'command line interface' },
   { abbreviation: 'DNS', phrase: 'domain name service' },
   { abbreviation: 'IT', phrase: 'information technology' },
-  { abbreviation: 'GPS', phrase: 'global positioning system' },
   { abbreviation: 'FTP', phrase: 'file transfer protocol' },
   { abbreviation: 'ASCII', phrase: 'american standard code for information interchange' },
   { abbreviation: 'DHCP', phrase: 'dynamic host configuration protocol' },
@@ -115,6 +114,7 @@ export const COMPUTING_ABBREVIATIONS: Abbreviation[] = [
   { abbreviation: 'NFC', phrase: 'near field communication' },
   { abbreviation: 'HDMI', phrase: 'high definition multimedia interface' },
   { abbreviation: 'DRM', phrase: 'digital rights management' },
+  { abbreviation: 'GPS', phrase: 'global positioning system' },
 ]
 
 export const AWS_ABBREVIATIONS: Abbreviation[] = [
