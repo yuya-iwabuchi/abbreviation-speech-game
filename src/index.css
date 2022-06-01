@@ -24,47 +24,6 @@
   }
 }
 
-@layer components {
-  .github-corner {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: -1;
-  }
-
-  .github-corner:hover .octo-arm {
-    animation: octocat-wave 560ms ease-in-out;
-  }
-
-  @keyframes octocat-wave {
-    0% {
-      transform: rotate(0deg);
-    }
-
-    33% {
-      transform: rotate(-10deg);
-    }
-
-    66% {
-      transform: rotate(10deg);
-    }
-
-    100% {
-      transform: rotate(0deg);
-    }
-  }
-
-  @media (max-width: 500px) {
-    .github-corner:hover .octo-arm {
-      animation: none;
-    }
-
-    .github-corner .octo-arm {
-      animation: octocat-wave 300ms ease-in-out;
-    }
-  }
-}
-
 @layer utilities {
   @keyframes width {
     0% {
