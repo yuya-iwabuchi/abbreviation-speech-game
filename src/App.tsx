@@ -188,17 +188,19 @@ export default function App() {
   }
 
   return (
-    <main className="container max-w-3xl mx-auto h-full py-5 px-7 text-center flex flex-col items-stretch">
-      <h1 className="font-bold text-5xl text-transparent text-blue-800 dark:text-blue-200 mb-3">
-        Abbreviation Speech Game
-      </h1>
-      <ErrorBoundary>
-        {isGameProgressShown && (
-          <Progress questions={questions} questionIndex={questionIndex} questionResults={questionResults} />
-        )}
-        <section className="grow flex flex-col">{gameStepContent}</section>
-        {isStopButtonShown && <StopButton handleReset={handleReset} />}
-      </ErrorBoundary>
-    </main>
+    <>
+      <main className="container max-w-3xl mx-auto h-full py-5 px-7 text-center flex flex-col items-stretch">
+        <h1 className="font-bold text-5xl text-transparent text-blue-800 dark:text-blue-200 mb-3 mx-8">
+          Abbreviation Speech Game
+        </h1>
+        <ErrorBoundary>
+          {isGameProgressShown && (
+            <Progress questions={questions} questionIndex={questionIndex} questionResults={questionResults} />
+          )}
+          <section className="grow flex flex-col">{gameStepContent}</section>
+          {isStopButtonShown && <StopButton handleReset={handleReset} />}
+        </ErrorBoundary>
+      </main>
+    </>
   )
 }
