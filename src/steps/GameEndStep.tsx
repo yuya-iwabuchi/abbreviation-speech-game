@@ -17,7 +17,7 @@ const GameEndStep = ({
 
   const endText = useMemo(() => {
     if (correctRatio >= 1) {
-      return 'Very perfect! Much wow!'
+      return 'Much perfect! Very wow!'
     }
     if (correctRatio >= 0.8) {
       return 'You did well!'
