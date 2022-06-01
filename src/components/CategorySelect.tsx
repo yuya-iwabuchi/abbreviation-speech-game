@@ -10,7 +10,7 @@ const CategorySelect = ({
   return (
     <>
       <div className="font-medium text-lg mb-3">Choose the category:</div>
-      <div className="flex justify-center flex-wrap mb-10">
+      <div className="flex justify-center flex-wrap mb-5 md:mb-10">
         {CATEGORIES.map((cat) => (
           <button
             key={cat.key}

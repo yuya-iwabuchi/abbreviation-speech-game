@@ -14,13 +14,15 @@ const STEP_BEATS_COUNT = BEATS_PER_BLOCK * 2
 const AnsweringStep = ({
   handleNextStep,
   setTranscriptResults,
+  handleSpeechRecognitionError,
   question,
   mostConfidentTranscript,
   mostCorrectTranscript,
   phraseRegex,
 }: {
-  handleNextStep: Function
+  handleNextStep: () => void
   setTranscriptResults: React.Dispatch<React.SetStateAction<SpeechRecognitionResult[]>>
+  handleSpeechRecognitionError: (error: SpeechRecognitionErrorEvent) => void
   question: Abbreviation
   mostConfidentTranscript: string
   mostCorrectTranscript: string | null
@@ -49,15 +51,23 @@ const AnsweringStep = ({
 
   useEffect(() => {
     const handleSpeechResult = (event: SpeechRecognitionEvent) => {
-      console.log('transcript', event)
+      console.log('[SpeechRecognition] transcript result:', event)
       setTranscriptResults(Array.from(event.results))
     }
-    console.log('addEventListener')
+
+    const handleSpeechError = (event: SpeechRecognitionErrorEvent) => {
+      console.error('[SpeechRecognition] error:', event)
+      handleSpeechRecognitionError(event)
+    }
+
+    console.log('[SpeechRecognition] added event listeners')
     recognition.addEventListener('result', handleSpeechResult)
+    recognition.addEventListener('error', handleSpeechError)
     setIsRecognitionReady(true)
 
     return () => {
       // To allow SpeechRecognition to attempt to return a result.
+      console.log('[SpeechRecognition] removed event listeners')
       setTimeout(() => recognition.removeEventListener('result', handleSpeechResult), BEAT_MS)
     }
   }, [recognition, setTranscriptResults])

@@ -7,10 +7,11 @@ import InitialStep from 'src/steps/InitialStep'
 import CountDownStep from 'src/steps/CountdownStep'
 import AnsweringStep from 'src/steps/AnsweringStep'
 import ResultStep from 'src/steps/ResultStep'
+import GameEndStep from 'src/steps/GameEndStep'
 
 import Progress from 'src/components/GameProgress'
 import StopButton from 'src/components/StopButton'
-import GameEndStep from './steps/GameEndStep'
+import ErrorBoundary from 'src/components/ErrorBoundary'
 
 const QUESTIONS_COUNT = 5
 
@@ -48,6 +49,7 @@ export default function App() {
   const [gameStep, setGameStep] = useState<GameStep>(GameStep.INITIAL)
   const [questionIndex, setQuestionIndex] = useState(-1)
 
+  const [speechRecognitionError, setSpeechRecognitionError] = useState<SpeechRecognitionErrorEvent | null>(null)
   const [transcriptResults, setTranscriptResults] = useState<SpeechRecognitionResult[]>([])
   const [questionResults, setQuestionResults] = useState<AbbreviationWithResult[]>([])
 
@@ -108,6 +110,7 @@ export default function App() {
 
   const handleNextRound = useCallback(() => {
     setTranscriptResults([])
+    setSpeechRecognitionError(null)
     if (questionIndex < questions.length - 1) {
       setQuestionIndex((currentIndex) => (currentIndex ?? -1) + 1)
       setGameStep(GameStep.COUNTDOWN)
@@ -120,6 +123,11 @@ export default function App() {
     setGameStep(GameStep.ANSWERING)
   }, [])
 
+  const handleSpeechRecognitionError = useCallback((error: SpeechRecognitionErrorEvent) => {
+    setSpeechRecognitionError(error)
+    setGameStep(GameStep.INITIAL)
+  }, [])
+
   const handleResultStep = useCallback(() => {
     setGameStep(GameStep.RESULT)
   }, [])
@@ -129,7 +137,14 @@ export default function App() {
   let isStopButtonShown = false
   switch (gameStep) {
     case GameStep.INITIAL:
-      gameStepContent = <InitialStep handleNextStep={handleNextRound} category={category} setCategory={setCategory} />
+      gameStepContent = (
+        <InitialStep
+          handleNextStep={handleNextRound}
+          category={category}
+          setCategory={setCategory}
+          speechRecognitionError={speechRecognitionError}
+        />
+      )
       break
     case GameStep.COUNTDOWN:
       isGameProgressShown = true
@@ -143,6 +158,7 @@ export default function App() {
         <AnsweringStep
           handleNextStep={handleResultStep}
           setTranscriptResults={setTranscriptResults}
+          handleSpeechRecognitionError={handleSpeechRecognitionError}
           question={question}
           mostConfidentTranscript={mostConfidentTranscript}
           mostCorrectTranscript={mostCorrectTranscript}
@@ -176,11 +192,13 @@ export default function App() {
       <h1 className="font-bold text-5xl text-transparent text-blue-800 dark:text-blue-200 mb-3">
         Abbreviation Speech Game
       </h1>
-      {isGameProgressShown && (
-        <Progress questions={questions} questionIndex={questionIndex} questionResults={questionResults} />
-      )}
-      <section className="grow flex flex-col">{gameStepContent}</section>
-      {isStopButtonShown && <StopButton handleReset={handleReset} />}
+      <ErrorBoundary>
+        {isGameProgressShown && (
+          <Progress questions={questions} questionIndex={questionIndex} questionResults={questionResults} />
+        )}
+        <section className="grow flex flex-col">{gameStepContent}</section>
+        {isStopButtonShown && <StopButton handleReset={handleReset} />}
+      </ErrorBoundary>
     </main>
   )
 }

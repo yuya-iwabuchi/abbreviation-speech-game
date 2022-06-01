@@ -87,6 +87,7 @@ export const DEVELOPER_ABBREVIATIONS: Abbreviation[] = [
   { abbreviation: 'CD', phrase: 'compact disc' },
   { abbreviation: 'CAD', phrase: 'computer aided design' },
   { abbreviation: 'AI', phrase: 'artificial intelligence' },
+  { abbreviation: 'SSR', phrase: 'server side rendering' },
 ]
 
 export const COMPUTING_ABBREVIATIONS: Abbreviation[] = [

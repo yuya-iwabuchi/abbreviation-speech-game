@@ -9,10 +9,12 @@ const InitialStep = ({
   handleNextStep,
   category,
   setCategory,
+  speechRecognitionError,
 }: {
   handleNextStep: Function
   category: Category
   setCategory: React.Dispatch<React.SetStateAction<Category>>
+  speechRecognitionError: SpeechRecognitionErrorEvent | null
 }) => {
   const [isPermissionError, setIsPermissionError] = useState(false)
 
@@ -20,11 +22,11 @@ const InitialStep = ({
     try {
       const mediaStream = await navigator.mediaDevices.getUserMedia({ audio: true })
       mediaStream.getTracks().forEach((track) => track.stop())
-      console.log('Permission granted.')
+      console.log('[getUserMedia] Permission granted.')
       handleNextStep()
     } catch (error) {
       setIsPermissionError(true)
-      console.error('Permission not granted.', error)
+      console.error('[getUserMedia] Permission not granted.', error)
     }
   }
 
@@ -36,6 +38,16 @@ const InitialStep = ({
     () => window.navigator.userAgent.match(/Macintosh/i) && window.navigator.userAgent.match(/Safari/i),
     [],
   )
+
+  const errorMessage = useMemo(() => {
+    if (speechRecognitionError) {
+      return `Error: ${speechRecognitionError?.message}`
+    }
+    if (isPermissionError) {
+      return 'Permission was not granted.'
+    }
+    return null
+  }, [isPermissionError, speechRecognitionError])
 
   return (
     <>
@@ -58,7 +70,7 @@ const InitialStep = ({
                 <span> to use the speech recognition.</span>
               </div>
             )}
-            <div className="font-red-700 font-semibold pt-3">{isPermissionError && 'Permission was not granted.'}</div>
+            <div className="text-red-500 dark:text-red-400 font-medium pt-3">{errorMessage}</div>
           </>
         ) : (
           <div className="text-center font-medium text-xl text-red-500 dark:text-red-400 mb-10">
