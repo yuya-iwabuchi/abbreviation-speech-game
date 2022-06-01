@@ -60,17 +60,20 @@ const AnsweringStep = ({
       handleSpeechRecognitionError(event)
     }
 
-    console.log('[SpeechRecognition] added event listeners')
     recognition.addEventListener('result', handleSpeechResult)
     recognition.addEventListener('error', handleSpeechError)
+    console.log('[SpeechRecognition] added event listeners')
     setIsRecognitionReady(true)
 
     return () => {
-      // To allow SpeechRecognition to attempt to return a result.
+      // To allow SpeechRecognition to attempt to return a result before removing the event listeners.
+      setTimeout(() => {
+        recognition.removeEventListener('result', handleSpeechResult)
+        recognition.removeEventListener('error', handleSpeechError)
+      }, BEAT_MS)
       console.log('[SpeechRecognition] removed event listeners')
-      setTimeout(() => recognition.removeEventListener('result', handleSpeechResult), BEAT_MS)
     }
-  }, [recognition, setTranscriptResults])
+  }, [recognition, setTranscriptResults, handleSpeechRecognitionError])
 
   useEffect(() => {
     if (!isRecognitionReady) {
