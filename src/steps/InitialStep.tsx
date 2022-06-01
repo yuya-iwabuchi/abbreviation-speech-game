@@ -52,7 +52,7 @@ const InitialStep = ({
   return (
     <>
       <DebugInfo />
-      <div className="text-lg">Say the correct phrase of the abbreviation in the given time to win the rounds!</div>
+      <div className="text-lg">Say the correct phrase of the abbreviation in the given time to win the round!</div>
       <div className="grow flex flex-col justify-center items-center mt-2 mb-8">
         {BrowserSpeechRecognition && !isIosChrome ? (
           <>
