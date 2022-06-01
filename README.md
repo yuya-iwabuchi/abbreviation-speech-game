@@ -12,7 +12,9 @@ Due to [it's limitation](https://developer.mozilla.org/en-US/docs/Web/API/Speech
 - Google Chrome on Android
 - Safari on iOS
 
-### <img src="public/logo192.png" data-canonical-src="public/logo192.png" width="18" height="18" /> [Try the game now!](https://abbreviation-speech-game.vercel.app/)
+### <img src="public/logo192.png" data-canonical-src="public/logo192.png" width="15" height="15" /> [Try the game now!](https://abbreviation-speech-game.vercel.app/)
+
+===
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
