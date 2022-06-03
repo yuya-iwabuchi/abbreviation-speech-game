@@ -100,7 +100,7 @@ export const DEVELOPER_ABBREVIATIONS: Abbreviation[] = [
 export const TECH_ABBREVIATIONS: Abbreviation[] = [
   { abbreviation: 'Wi-Fi', phrase: 'wireless fidelity' },
   { abbreviation: 'USB', phrase: 'universal serial bus' },
-  { abbreviation: 'GPU', phrase: 'graphical processing unit' },
+  { abbreviation: 'GPU', phrase: 'graphics processing unit' },
   { abbreviation: 'CPU', phrase: 'central processing unit' },
   { abbreviation: 'RAM', phrase: 'random access memory' },
   { abbreviation: 'HDD', phrase: 'hard disk drive' },
@@ -189,8 +189,31 @@ export const GAMING_ABBREVIATIONS: Abbreviation[] = [
   { abbreviation: 'LFG', phrase: 'looking for group' },
 ]
 
+export const BLOCKCHAIN_ABBREVIATIONS: Abbreviation[] = [
+  { abbreviation: 'BTC', phrase: 'bitcoin' },
+  { abbreviation: 'XRP', phrase: 'ripple' },
+  { abbreviation: 'LTC', phrase: 'litecoin' },
+  { abbreviation: 'XLM', phrase: 'stellar' },
+  { abbreviation: 'GPU', phrase: 'graphics processing unit' },
+  { abbreviation: 'ASIC', phrase: 'application specific integrated circuit' },
+  { abbreviation: 'FPGA', phrase: 'field programmable gate array' },
+  { abbreviation: 'BFT', phrase: 'byzantine fault tolerance' },
+  { abbreviation: 'PoW', phrase: 'proof of work' },
+  { abbreviation: 'PoS', phrase: 'proof of stake' },
+  { abbreviation: 'PoA', phrase: 'proof of authority' },
+  { abbreviation: 'IPFS', phrase: 'interplanetary file system' },
+  { abbreviation: 'DeFi', phrase: 'distributed finance' },
+  { abbreviation: 'DEX', phrase: 'decentralized exchange' },
+  { abbreviation: 'DAPP', phrase: 'decentralized application' },
+  { abbreviation: 'DAI', phrase: 'decentralized autonomous identity' },
+  { abbreviation: 'DAO', phrase: 'decentralized autonomous organization' },
+  { abbreviation: 'NFT', phrase: 'non fungible token' },
+  { abbreviation: 'ICO', phrase: 'initial coin offering' },
+  { abbreviation: 'ITO', phrase: 'initial token offering' },
+  { abbreviation: 'HODL', phrase: 'hold on for dear life' },
+]
+
 export const SLANG_ABBREVIATIONS: Abbreviation[] = [
-  // { abbreviation: 'WTF', phrase: 'what the fuck' },
   // { abbreviation: 'SMH', phrase: ['shaking my head', 'shake my head'] },
   { abbreviation: 'BTW', phrase: 'by the way' },
   { abbreviation: 'AFAIK', phrase: 'as far as i know' },
@@ -275,6 +298,11 @@ export const CATEGORIES: Category[] = [
     key: 'aws',
     label: 'AWS',
     abbreviations: AWS_ABBREVIATIONS,
+  },
+  {
+    key: 'blockchain',
+    label: 'Blockchain',
+    abbreviations: BLOCKCHAIN_ABBREVIATIONS,
   },
   {
     key: 'gaming',
