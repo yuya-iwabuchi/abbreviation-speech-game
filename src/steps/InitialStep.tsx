@@ -84,6 +84,7 @@ const InitialStep = ({
       </div>
       <div className="mb-5 leading-tight">
         <div>
+          <span>This game uses </span>
           <a
             className="font-medium underline transition hover:brightness-90"
             href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API"
@@ -92,28 +93,22 @@ const InitialStep = ({
           >
             Web Speech API
           </a>
-          <span> is currently in experimental state and are </span>
+          <span> which is currently in experimental state, and are </span>
           <a
             className="font-medium underline transition hover:brightness-90"
             href="https://caniuse.com/speech-recognition"
             target="_blank"
             rel="noreferrer"
           >
-            not available on all platforms/browsers
+            not available on all platforms and browsers
           </a>
           <span>.</span>
         </div>
         <div className="mt-2">
-          <span>For best experience, please use </span>
-          <a
-            className="font-medium underline transition hover:brightness-90"
-            href="https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition#browser_compatibility"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Chrome on Windows/macOS/Android
-          </a>
-          <span>.</span>
+          <span>
+            For best experience, please use Chrome on OSX, Windows, and Android, or the latest version of Safari on iOS
+            devices. Firefox and iOS 14.4 are not currently supported.
+          </span>
         </div>
       </div>
     </>

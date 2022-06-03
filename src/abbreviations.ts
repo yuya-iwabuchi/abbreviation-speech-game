@@ -9,7 +9,6 @@ export interface AbbreviationWithResult extends Abbreviation {
 }
 
 export const DEVELOPER_ABBREVIATIONS: Abbreviation[] = [
-  { abbreviation: 'Wi-Fi', phrase: 'wireless fidelity' },
   { abbreviation: 'WWW', phrase: 'world wide web' },
   { abbreviation: 'VPN', phrase: 'virtual private network' },
   { abbreviation: 'VoIP', phrase: 'voice over internet protocol' },
@@ -86,9 +85,20 @@ export const DEVELOPER_ABBREVIATIONS: Abbreviation[] = [
   { abbreviation: 'CAD', phrase: 'computer aided design' },
   { abbreviation: 'AI', phrase: 'artificial intelligence' },
   { abbreviation: 'SSR', phrase: 'server side rendering' },
+  { abbreviation: 'CTA', phrase: 'call to action' },
+  { abbreviation: 'TSV', phrase: 'tab separated value' },
+  { abbreviation: 'DDL', phrase: 'data definition language' },
+  { abbreviation: 'DML', phrase: 'data manipulation language' },
+  { abbreviation: 'EOF', phrase: 'end of file' },
+  { abbreviation: 'EOL', phrase: 'end of line' },
+  { abbreviation: 'ETL', phrase: 'extract transform load' },
+  { abbreviation: 'REST', phrase: 'representational state transfer' },
+  { abbreviation: 'VB', phrase: 'visual basic' },
+  { abbreviation: 'XP', phrase: 'extreme programming' },
 ]
 
-export const COMPUTING_ABBREVIATIONS: Abbreviation[] = [
+export const TECH_ABBREVIATIONS: Abbreviation[] = [
+  { abbreviation: 'Wi-Fi', phrase: 'wireless fidelity' },
   { abbreviation: 'USB', phrase: 'universal serial bus' },
   { abbreviation: 'GPU', phrase: 'graphical processing unit' },
   { abbreviation: 'CPU', phrase: 'central processing unit' },
@@ -115,6 +125,11 @@ export const COMPUTING_ABBREVIATIONS: Abbreviation[] = [
   { abbreviation: 'DRM', phrase: 'digital rights management' },
   { abbreviation: 'GPS', phrase: 'global positioning system' },
   { abbreviation: 'ROM', phrase: 'read only memory' },
+  { abbreviation: 'RADAR', phrase: 'radio detection and ranging' },
+  { abbreviation: 'LASER', phrase: 'light amplification by stimulated emission of radiation' },
+  { abbreviation: 'SMS', phrase: 'short message service' },
+  { abbreviation: 'MMS', phrase: 'multimedia messaging service' },
+  { abbreviation: 'RCS', phrase: 'rich communication service' },
 ]
 
 export const AWS_ABBREVIATIONS: Abbreviation[] = [
@@ -175,13 +190,14 @@ export const GAMING_ABBREVIATIONS: Abbreviation[] = [
 ]
 
 export const SLANG_ABBREVIATIONS: Abbreviation[] = [
+  // { abbreviation: 'WTF', phrase: 'what the fuck' },
+  // { abbreviation: 'SMH', phrase: ['shaking my head', 'shake my head'] },
   { abbreviation: 'BTW', phrase: 'by the way' },
   { abbreviation: 'AFAIK', phrase: 'as far as i know' },
   { abbreviation: 'FOMO', phrase: 'fear of missing out' },
   { abbreviation: 'FWIW', phrase: "for what it's worth" },
   { abbreviation: 'NVM', phrase: 'nevermind' },
   { abbreviation: 'TBH', phrase: 'to be honest' },
-  // { abbreviation: 'SMH', phrase: 'shaking my head' },
   { abbreviation: 'YOLO', phrase: 'you only live once' },
   { abbreviation: 'BRB', phrase: 'be right back' },
   { abbreviation: 'DM', phrase: 'direct message' },
@@ -202,6 +218,16 @@ export const SLANG_ABBREVIATIONS: Abbreviation[] = [
   { abbreviation: 'TTYL', phrase: 'talk to you later' },
   { abbreviation: 'TGIF', phrase: "thank god it's friday" },
   { abbreviation: 'IKR', phrase: 'i know right' },
+  { abbreviation: 'TL;DR', phrase: "too long didn't read" },
+  { abbreviation: 'IDK', phrase: "i don't know" },
+  { abbreviation: 'TBA', phrase: 'to be announced' },
+  { abbreviation: 'NP', phrase: 'no problem' },
+  { abbreviation: 'ASAP', phrase: 'as soon as possible' },
+  // { abbreviation: 'BYOB', phrase: 'bring your own beer' },
+  { abbreviation: 'ETA', phrase: 'estimated time of arrival' },
+  { abbreviation: 'IIRC', phrase: 'if i recall correctly' },
+  { abbreviation: 'IMHO', phrase: 'in my humble opinion' },
+  { abbreviation: 'OMW', phrase: 'on my way' },
 ]
 
 export const BUSINESS_ABBREVIATIONS: Abbreviation[] = [
@@ -241,9 +267,9 @@ export const CATEGORIES: Category[] = [
     abbreviations: DEVELOPER_ABBREVIATIONS,
   },
   {
-    key: 'computing',
-    label: 'Computing',
-    abbreviations: COMPUTING_ABBREVIATIONS,
+    key: 'tech',
+    label: 'Tech',
+    abbreviations: TECH_ABBREVIATIONS,
   },
   {
     key: 'aws',
