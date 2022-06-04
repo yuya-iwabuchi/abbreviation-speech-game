@@ -4,7 +4,7 @@ import { BEAT_MS } from 'src/constants'
 export const useTimer = (
   handleTimerComplete: Function,
   beatsCount: number,
-  msPerBeats: number = BEAT_MS,
+  beatMs: number = BEAT_MS,
 ): [number, boolean] => {
   const [isTimerComplete, setIsTimerComplete] = useState(false)
   const [beatsFired, setBeatsFired] = useState(0)
@@ -13,9 +13,9 @@ export const useTimer = (
     if (!beatsCount || isTimerComplete) {
       return
     }
-    const intervalId = setInterval(() => setBeatsFired((current) => current + 1), msPerBeats)
+    const intervalId = setInterval(() => setBeatsFired((current) => current + 1), beatMs)
     return () => clearInterval(intervalId)
-  }, [beatsCount, isTimerComplete, msPerBeats])
+  }, [beatsCount, isTimerComplete, beatMs])
 
   useEffect(() => {
     if (beatsFired >= beatsCount) {
