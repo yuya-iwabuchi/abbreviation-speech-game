@@ -125,10 +125,13 @@ export default function App() {
     setGameStep(GameStep.ANSWERING)
   }, [])
 
-  const handleSpeechRecognitionError = useCallback((error: SpeechRecognitionErrorEvent) => {
-    setSpeechRecognitionError(error)
-    setGameStep(GameStep.INITIAL)
-  }, [])
+  const handleSpeechRecognitionError = useCallback(
+    (error: SpeechRecognitionErrorEvent) => {
+      setSpeechRecognitionError(error)
+      handleReset()
+    },
+    [handleReset],
+  )
 
   const handleResultStep = useCallback(() => {
     setGameStep(GameStep.RESULT)
@@ -190,9 +193,7 @@ export default function App() {
   return (
     <>
       <main className="container max-w-3xl mx-auto h-full py-5 px-7 text-center flex flex-col items-stretch">
-        <h1 className="font-bold text-5xl text-transparent text-blue-800 dark:text-blue-200 mb-3 mx-8">
-          Abbreviation Speech Game
-        </h1>
+        <h1 className="font-bold text-5xl text-blue-800 dark:text-blue-200 mb-3 mx-8">Abbreviation Speech Game</h1>
         <ErrorBoundary>
           {isGameProgressShown && (
             <Progress questions={questions} questionIndex={questionIndex} questionResults={questionResults} />

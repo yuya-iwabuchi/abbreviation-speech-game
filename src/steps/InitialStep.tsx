@@ -3,8 +3,7 @@ import CategorySelect from 'src/components/CategorySelect'
 
 import { BrowserSpeechRecognition } from 'src/web-speech-api'
 import { Category } from 'src/abbreviations'
-import DebugInfo from 'src/components/DebugInfo'
-import Octocat from 'src/components/Octocat'
+import GitHubLinkWithVersion from 'src/components/GitHubLinkWithVersion'
 
 const InitialStep = ({
   handleNextStep,
@@ -42,7 +41,7 @@ const InitialStep = ({
 
   const errorMessage = useMemo(() => {
     if (speechRecognitionError) {
-      return `Error: ${speechRecognitionError?.message}`
+      return `Error: ${speechRecognitionError?.message || speechRecognitionError?.error}`
     }
     if (isPermissionError) {
       return 'Permission was not granted.'
@@ -52,8 +51,7 @@ const InitialStep = ({
 
   return (
     <>
-      <Octocat />
-      <DebugInfo />
+      <GitHubLinkWithVersion />
       <div className="text-lg">Say the correct phrase of the abbreviation in the given time to win the round!</div>
       <div className="grow flex flex-col justify-center items-center mt-2 mb-8">
         {BrowserSpeechRecognition && !isIosChrome ? (
@@ -61,7 +59,7 @@ const InitialStep = ({
             <CategorySelect category={category} setCategory={setCategory} />
             <button
               onClick={handleStartGame}
-              className="bg-blue-300 dark:bg-blue-600 text-blue-800 dark:text-blue-100 text-6xl font-semibold px-10 py-5 rounded-full transition ease-in-out hover:scale-110"
+              className="bg-blue-300 dark:bg-blue-600 text-blue-900 dark:text-blue-100 text-6xl font-semibold px-10 py-5 rounded-full transition ease-in-out hover:scale-110"
             >
               START
             </button>

@@ -31,7 +31,7 @@ const ResultsTable = ({ questionResults }: { questionResults: AbbreviationWithRe
                     {abbreviation}
                   </div>
                 </td>
-                <td className="capitalize">
+                <td>
                   <div className="my-2 mx-1">
                     <PhraseSection bestTranscript={transcript} phraseRegex={phraseRegex} showAnswer />
                     {!isCorrect && <div className="mt-2">Answer: {phrase}</div>}

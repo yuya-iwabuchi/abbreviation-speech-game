@@ -26,10 +26,10 @@
 
 @layer utilities {
   @keyframes width {
-    0% {
+    from {
       width: 0%;
     }
-    100% {
+    to {
       width: 100%;
     }
   }
@@ -56,6 +56,19 @@
     }
     50% {
       transform: scale(1.1);
+    }
+  }
+
+  @keyframes cursor-blink {
+    0%,
+    40%,
+    100% {
+      @apply border-r-gray-700;
+    }
+
+    50%,
+    90% {
+      @apply border-r-gray-300;
     }
   }
 }

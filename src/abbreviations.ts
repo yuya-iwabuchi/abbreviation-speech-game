@@ -80,7 +80,6 @@ export const DEVELOPER_ABBREVIATIONS: Abbreviation[] = [
   { abbreviation: 'JPEG', phrase: 'joint photographic experts group' },
   { abbreviation: 'NTP', phrase: 'network time protocol' },
   { abbreviation: 'DBMS', phrase: 'database management service' },
-  { abbreviation: 'CD', phrase: 'compact disc' },
   { abbreviation: 'CAD', phrase: 'computer aided design' },
   { abbreviation: 'AI', phrase: 'artificial intelligence' },
   { abbreviation: 'SSR', phrase: 'server side rendering' },
@@ -94,9 +93,12 @@ export const DEVELOPER_ABBREVIATIONS: Abbreviation[] = [
   { abbreviation: 'VB', phrase: 'visual basic' },
   { abbreviation: 'XP', phrase: 'extreme programming' },
   { abbreviation: 'BLOB', phrase: 'binary large object' },
+  { abbreviation: 'CD', phrase: 'continuous delivery' },
+  { abbreviation: 'CI', phrase: 'continuous integration' },
 ]
 
 export const TECH_ABBREVIATIONS: Abbreviation[] = [
+  { abbreviation: 'CD', phrase: 'compact disc' },
   { abbreviation: 'LTE', phrase: 'long term evolution' },
   { abbreviation: 'Wi-Fi', phrase: 'wireless fidelity' },
   { abbreviation: 'USB', phrase: 'universal serial bus' },

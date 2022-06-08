@@ -62,7 +62,7 @@ const ResultStep = ({
     <>
       <TimerProgressBar beatsCount={STEP_BEATS_COUNT} />
       <AbbreviationSection abbreviation={question.abbreviation} />
-      <div className="my-4 min-h-[35px] capitalize text-2xl">
+      <div className="my-4 min-h-[35px] text-2xl">
         <PhraseSection bestTranscript={bestTranscript} phraseRegex={phraseRegex} showAnswer={!isProcessing} />
       </div>
       <div className="capitalize text-xl min-h-[30px] my-4">

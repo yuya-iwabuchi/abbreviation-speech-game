@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { BEATS_PER_BLOCK, BEAT_MS } from 'src/constants'
 import { Abbreviation } from 'src/abbreviations'
@@ -28,17 +28,21 @@ const AnsweringStep = ({
 }) => {
   useTimer(handleNextStep, STEP_BEATS_COUNT)
   const [isRecognitionReady, setIsRecognitionReady] = useState(false)
+  const [isRecognitionStarted, setIsRecognitionStarted] = useState(false)
+  const [recognitionRestartCount, setRecognitionRestartCount] = useState(0)
 
   const recognition = useMemo(() => {
     const recognition = new BrowserSpeechRecognition()
-    recognition.continuous = true
     recognition.lang = 'en-US'
+    recognition.continuous = true
     recognition.interimResults = true
-    recognition.maxAlternatives = 2
+    recognition.maxAlternatives = 3
 
     // Add grammar for answer hints if supported
     if (BrowserSpeechGrammarList) {
-      const grammar = `#JSGF V1.0; grammar phrase; public <phrase> = ${question.phrase};`
+      const wholePhrase = question.phrase
+      const individualWords = question.phrase.split(' ').join(' | ')
+      const grammar = `#JSGF V1.0; grammar phrase; public <phrase> = ${wholePhrase} | ${individualWords};`
       const speechRecognitionList = new BrowserSpeechGrammarList()
       speechRecognitionList.addFromString(grammar, 1)
       recognition.grammars = speechRecognitionList
@@ -47,52 +51,80 @@ const AnsweringStep = ({
     return recognition
   }, [question.phrase])
 
+  const startRecognition = useCallback(() => {
+    try {
+      setIsRecognitionStarted(true)
+      recognition.start()
+      console.log('[SpeechRecognition] started')
+    } catch (error) {
+      handleSpeechRecognitionError(error as SpeechRecognitionErrorEvent)
+      console.error('[SpeechRecognition] start error:', error)
+    }
+  }, [recognition, handleSpeechRecognitionError])
+
+  const stopRecognition = useCallback(() => {
+    try {
+      recognition.stop()
+      console.log('[SpeechRecognition] stopped')
+    } catch (error) {
+      handleSpeechRecognitionError(error as SpeechRecognitionErrorEvent)
+      console.error('[SpeechRecognition] stop error:', error)
+    }
+  }, [recognition, handleSpeechRecognitionError])
+
   useEffect(() => {
     const handleSpeechResult = (event: SpeechRecognitionEvent) => {
       console.log('[SpeechRecognition] transcript result:', event)
       setTranscriptResults(Array.from(event.results))
     }
-
     const handleSpeechError = (event: SpeechRecognitionErrorEvent) => {
-      console.error('[SpeechRecognition] error:', event)
+      console.error('[SpeechRecognition] recognition error:', event)
       handleSpeechRecognitionError(event)
+    }
+    const handleSpeechEnd = () => {
+      console.log('[SpeechRecognition] recognition ended')
+      // Queue to restart speech recognition if ended prematurely.
+      setIsRecognitionStarted(false)
+      setRecognitionRestartCount((count) => {
+        console.log('[SpeechRecognition] queuing restart #', count + 1)
+        return count + 1
+      })
     }
 
     recognition.addEventListener('result', handleSpeechResult)
     recognition.addEventListener('error', handleSpeechError)
+    recognition.addEventListener('end', handleSpeechEnd)
+
     console.log('[SpeechRecognition] added event listeners')
     setIsRecognitionReady(true)
+    setRecognitionRestartCount(0)
 
     return () => {
       // To allow SpeechRecognition to attempt to return a result before removing the event listeners.
       setTimeout(() => {
         recognition.removeEventListener('result', handleSpeechResult)
         recognition.removeEventListener('error', handleSpeechError)
+        recognition.removeEventListener('end', handleSpeechEnd)
       }, BEAT_MS)
       console.log('[SpeechRecognition] removed event listeners')
     }
   }, [recognition, setTranscriptResults, handleSpeechRecognitionError])
 
   useEffect(() => {
-    if (!isRecognitionReady) {
+    if (!isRecognitionReady || isRecognitionStarted || recognitionRestartCount > 10) {
+      // Limit restarts to avoid infinite loop.
       return
     }
-    try {
-      recognition.start()
-    } catch {
-      // TODO: multi-renders by strict mode
-    }
-    return () => {
-      recognition.stop()
-    }
-  }, [recognition, isRecognitionReady])
+    startRecognition()
+    return () => stopRecognition()
+  }, [startRecognition, stopRecognition, isRecognitionReady, isRecognitionStarted, recognitionRestartCount])
 
   return (
     <>
       <TimerProgressBar beatsCount={STEP_BEATS_COUNT} />
       <AbbreviationSection withInstruction abbreviation={question.abbreviation} />
-      <div className="my-4 min-h-[35px] capitalize text-2xl">
-        <PhraseSection bestTranscript={bestTranscript} phraseRegex={phraseRegex} />
+      <div className="my-4 min-h-[35px] text-2xl">
+        <PhraseSection bestTranscript={bestTranscript} phraseRegex={phraseRegex} showCursor={isRecognitionStarted} />
       </div>
     </>
   )
