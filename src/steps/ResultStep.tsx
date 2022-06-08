@@ -17,22 +17,21 @@ const ResultStep = ({
   handleNextStep,
   setQuestionResults,
   question,
-  mostConfidentTranscript,
-  mostCorrectTranscript,
+  bestTranscript,
+  isCorrect,
   phraseRegex,
   isLastQuestion,
 }: {
   handleNextStep: Function
   setQuestionResults: React.Dispatch<React.SetStateAction<AbbreviationWithResult[]>>
   question: Abbreviation
-  mostConfidentTranscript: string
-  mostCorrectTranscript: string | null
+  bestTranscript: string
+  isCorrect: boolean
   phraseRegex: RegExp
   isLastQuestion: boolean
 }) => {
   const [beatsFired] = useTimer(handleNextStep, STEP_BEATS_COUNT)
 
-  const isCorrect = useMemo(() => !!mostCorrectTranscript, [mostCorrectTranscript])
   const isProcessing = useMemo(() => beatsFired <= BEATS_PER_BLOCK / 4, [beatsFired])
   const isGoingToNextRound = useMemo(() => beatsFired >= STEP_BEATS_COUNT - BEATS_PER_BLOCK / 2, [beatsFired])
 
@@ -40,7 +39,6 @@ const ResultStep = ({
     if (isProcessing) {
       return
     }
-    const bestTranscript = mostCorrectTranscript || mostConfidentTranscript || ''
     setQuestionResults((results) => [
       ...results,
       {
@@ -49,7 +47,7 @@ const ResultStep = ({
         isCorrect,
       },
     ])
-  }, [isProcessing, setQuestionResults, question, mostCorrectTranscript, mostConfidentTranscript, isCorrect])
+  }, [isProcessing, setQuestionResults, question, bestTranscript, isCorrect])
 
   const nextRoundText = useMemo(() => {
     if (isLastQuestion) {
@@ -64,13 +62,9 @@ const ResultStep = ({
     <>
       <TimerProgressBar beatsCount={STEP_BEATS_COUNT} />
       <AbbreviationSection abbreviation={question.abbreviation} />
-      <PhraseSection
-        mostConfidentTranscript={mostConfidentTranscript}
-        mostCorrectTranscript={mostCorrectTranscript}
-        phraseRegex={phraseRegex}
-        question={question}
-        showAnswer={!isProcessing}
-      />
+      <div className="my-4 min-h-[35px] capitalize text-2xl">
+        <PhraseSection bestTranscript={bestTranscript} phraseRegex={phraseRegex} showAnswer={!isProcessing} />
+      </div>
       <div className="capitalize text-xl min-h-[30px] my-4">
         {!isProcessing && (
           <>

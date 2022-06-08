@@ -3,6 +3,7 @@ import { useMemo } from 'react'
 import { AbbreviationWithResult } from 'src/abbreviations'
 
 import BottomRightConfetti from 'src/components/BottomRightConfetti'
+import ResultsTable from 'src/components/ResultsTable'
 
 const GameEndStep = ({
   handleReset,
@@ -20,26 +21,32 @@ const GameEndStep = ({
       return 'Much perfect! Very wow!'
     }
     if (correctRatio >= 0.8) {
-      return 'You did well!'
+      return 'Nice job!'
     }
     if (correctRatio >= 0.5) {
       return 'Not bad!'
     }
-    return 'Well that was hard! Better luck next time!'
+    return 'That was hard! Better luck next time!'
   }, [correctRatio])
 
   return (
     <>
-      <div className="font-serif font-bold text-7xl py-9">
-        {correctCount} / {questionsCount}
+      <div className="grow flex flex-col justify-center items-stretch mt-5">
+        <ResultsTable questionResults={questionResults} />
       </div>
-      <div className="font-semibold text-3xl pb-10">{endText}</div>
-      <div className="grow flex flex-col justify-center items-center">
+      <div className="my-10">
+        <div className="font-semibold text-2xl mb-10">
+          <span>
+            You got {correctCount} out of {questionsCount} correct.
+          </span>
+          <span> </span>
+          <span>{endText}</span>
+        </div>
         <button
           onClick={handleReset}
           className="bg-blue-300 dark:bg-blue-600 text-blue-800 dark:text-blue-100 text-3xl font-semibold px-10 py-5 rounded-full transition ease-in-out hover:scale-110"
         >
-          FINISH
+          TRY AGAIN
         </button>
       </div>
 

@@ -79,14 +79,12 @@ export const DEVELOPER_ABBREVIATIONS: Abbreviation[] = [
   { abbreviation: 'VM', phrase: 'virtual machine' },
   { abbreviation: 'JPEG', phrase: 'joint photographic experts group' },
   { abbreviation: 'NTP', phrase: 'network time protocol' },
-  { abbreviation: 'LTE', phrase: 'long term evolution' },
   { abbreviation: 'DBMS', phrase: 'database management service' },
   { abbreviation: 'CD', phrase: 'compact disc' },
   { abbreviation: 'CAD', phrase: 'computer aided design' },
   { abbreviation: 'AI', phrase: 'artificial intelligence' },
   { abbreviation: 'SSR', phrase: 'server side rendering' },
   { abbreviation: 'CTA', phrase: 'call to action' },
-  { abbreviation: 'TSV', phrase: 'tab separated value' },
   { abbreviation: 'DDL', phrase: 'data definition language' },
   { abbreviation: 'DML', phrase: 'data manipulation language' },
   { abbreviation: 'EOF', phrase: 'end of file' },
@@ -99,6 +97,7 @@ export const DEVELOPER_ABBREVIATIONS: Abbreviation[] = [
 ]
 
 export const TECH_ABBREVIATIONS: Abbreviation[] = [
+  { abbreviation: 'LTE', phrase: 'long term evolution' },
   { abbreviation: 'Wi-Fi', phrase: 'wireless fidelity' },
   { abbreviation: 'USB', phrase: 'universal serial bus' },
   { abbreviation: 'GPU', phrase: 'graphics processing unit' },

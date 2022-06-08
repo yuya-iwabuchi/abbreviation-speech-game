@@ -1,4 +1,7 @@
 import { Abbreviation, AbbreviationWithResult } from 'src/abbreviations'
+import { RoundState } from 'src/constants'
+
+import ResultIcon from 'src/components/ResultIcon'
 
 const GameProgress = ({
   questions,
@@ -12,35 +15,23 @@ const GameProgress = ({
   return (
     <div className="flex flex-wrap justify-center my-3">
       {questions.map((question, index) => {
-        let bgColor: string
-        let content: string
+        let roundState = null
         if (index > questionIndex) {
-          bgColor = 'bg-gray-300 dark:bg-gray-500'
-          content = ''
+          roundState = RoundState.PENDING
         } else {
           switch (questionResults.at(index)?.isCorrect) {
             case true:
-              bgColor = 'bg-blue-400 dark:bg-blue-500'
-              content = '✓'
+              roundState = RoundState.CORRECT
               break
             case false:
-              bgColor = 'bg-red-400 dark:bg-red-500'
-              content = '✕'
+              roundState = RoundState.WRONG
               break
             default:
-              bgColor = 'bg-yellow-550 dark:bg-yellow-500'
-              content = '?'
+              roundState = RoundState.ANSWERING
               break
           }
         }
-        return (
-          <div
-            key={question.abbreviation}
-            className={`aspect-square h-6 w-6 m-1 rounded flex justify-center items-center ${bgColor}`}
-          >
-            <div className="font-bold text-white leading-normal">{content}</div>
-          </div>
-        )
+        return <ResultIcon key={question.abbreviation} state={roundState} />
       })}
     </div>
   )

@@ -85,14 +85,16 @@ export default function App() {
 
     return allCombinations as SpeechRecognitionAlternative[]
   }, [transcriptResults])
-  const mostConfidentTranscript = useMemo(() => sortedTranscripts?.at(0)?.transcript ?? '', [sortedTranscripts])
   const phraseRegex = useMemo(() => new RegExp(`(${question?.phrase})`, 'gi'), [question?.phrase])
-  const mostCorrectTranscript = useMemo(
-    () =>
-      sortedTranscripts?.find(({ transcript }) => transcript.toLowerCase().includes(question?.phrase))?.transcript ??
-      null,
-    [sortedTranscripts, question],
-  )
+  const [bestTranscript, isCorrect] = useMemo(() => {
+    const correctTranscript = sortedTranscripts?.find(({ transcript }) =>
+      transcript.toLowerCase().includes(question?.phrase),
+    )
+    if (correctTranscript) {
+      return [correctTranscript.transcript, true]
+    }
+    return [sortedTranscripts?.at(0)?.transcript ?? '', false]
+  }, [sortedTranscripts, question])
 
   useEffect(() => {
     setQuestions(generateQuestions(category.abbreviations))
@@ -160,8 +162,7 @@ export default function App() {
           setTranscriptResults={setTranscriptResults}
           handleSpeechRecognitionError={handleSpeechRecognitionError}
           question={question}
-          mostConfidentTranscript={mostConfidentTranscript}
-          mostCorrectTranscript={mostCorrectTranscript}
+          bestTranscript={bestTranscript}
           phraseRegex={phraseRegex}
         />
       )
@@ -174,15 +175,14 @@ export default function App() {
           handleNextStep={handleNextRound}
           setQuestionResults={setQuestionResults}
           question={question}
-          mostConfidentTranscript={mostConfidentTranscript}
-          mostCorrectTranscript={mostCorrectTranscript}
+          bestTranscript={bestTranscript}
+          isCorrect={isCorrect}
           phraseRegex={phraseRegex}
           isLastQuestion={isLastQuestion}
         />
       )
       break
     case GameStep.GAME_END:
-      isGameProgressShown = true
       gameStepContent = <GameEndStep handleReset={handleReset} questionResults={questionResults} />
       break
   }

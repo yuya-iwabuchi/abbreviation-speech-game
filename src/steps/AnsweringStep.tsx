@@ -16,16 +16,14 @@ const AnsweringStep = ({
   setTranscriptResults,
   handleSpeechRecognitionError,
   question,
-  mostConfidentTranscript,
-  mostCorrectTranscript,
+  bestTranscript,
   phraseRegex,
 }: {
   handleNextStep: () => void
   setTranscriptResults: React.Dispatch<React.SetStateAction<SpeechRecognitionResult[]>>
   handleSpeechRecognitionError: (error: SpeechRecognitionErrorEvent) => void
   question: Abbreviation
-  mostConfidentTranscript: string
-  mostCorrectTranscript: string | null
+  bestTranscript: string
   phraseRegex: RegExp
 }) => {
   useTimer(handleNextStep, STEP_BEATS_COUNT)
@@ -93,12 +91,9 @@ const AnsweringStep = ({
     <>
       <TimerProgressBar beatsCount={STEP_BEATS_COUNT} />
       <AbbreviationSection withInstruction abbreviation={question.abbreviation} />
-      <PhraseSection
-        mostConfidentTranscript={mostConfidentTranscript}
-        mostCorrectTranscript={mostCorrectTranscript}
-        phraseRegex={phraseRegex}
-        question={question}
-      />
+      <div className="my-4 min-h-[35px] capitalize text-2xl">
+        <PhraseSection bestTranscript={bestTranscript} phraseRegex={phraseRegex} />
+      </div>
     </>
   )
 }
