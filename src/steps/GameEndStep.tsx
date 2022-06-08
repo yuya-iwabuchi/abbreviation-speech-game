@@ -48,7 +48,7 @@ const GameEndStep = ({
           onClick={handleReset}
           className="bg-blue-300 dark:bg-blue-600 text-blue-900 dark:text-blue-100 text-3xl font-semibold px-10 py-5 rounded-full transition ease-in-out hover:scale-110"
         >
-          TRY AGAIN
+          PLAY AGAIN
         </button>
       </div>
 

@@ -61,7 +61,7 @@ const InitialStep = ({
               onClick={handleStartGame}
               className="bg-blue-300 dark:bg-blue-600 text-blue-900 dark:text-blue-100 text-6xl font-semibold px-10 py-5 rounded-full transition ease-in-out hover:scale-110"
             >
-              START
+              PLAY
             </button>
             {isMacosSafari && (
               <div className="text-lg break-normal pt-3">
