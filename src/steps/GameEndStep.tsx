@@ -2,6 +2,8 @@ import { useMemo } from 'react'
 
 import { AbbreviationWithResult } from 'src/abbreviations'
 
+import DebugInfo from 'src/components/DebugInfo'
+import Octocat from 'src/components/Octocat'
 import BottomRightConfetti from 'src/components/BottomRightConfetti'
 import ResultsTable from 'src/components/ResultsTable'
 
@@ -31,6 +33,8 @@ const GameEndStep = ({
 
   return (
     <>
+      <Octocat />
+      <DebugInfo />
       <div className="grow flex flex-col justify-center items-stretch mt-5">
         <ResultsTable questionResults={questionResults} />
       </div>
