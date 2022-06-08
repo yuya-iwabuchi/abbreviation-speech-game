@@ -126,8 +126,10 @@ const AnsweringStep = ({
   }, [startRecognition, isRecognitionReady, isRecognitionStarted, recognitionRestartCount])
 
   useEffect(() => {
-    return () => stopRecognition()
-  }, [stopRecognition])
+    if (isRecognitionStarted) {
+      return () => stopRecognition()
+    }
+  }, [isRecognitionStarted, stopRecognition])
 
   return (
     <>
