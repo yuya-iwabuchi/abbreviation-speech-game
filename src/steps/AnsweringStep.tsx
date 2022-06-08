@@ -87,7 +87,6 @@ const AnsweringStep = ({
     }
     const handleSpeechError = (event: SpeechRecognitionErrorEvent) => {
       console.error('[SpeechRecognition] recognition error:', event)
-      handleSpeechRecognitionError(event)
     }
     const handleSpeechEnd = () => {
       console.log('[SpeechRecognition] recognition ended')
