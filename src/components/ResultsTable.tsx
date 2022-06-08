@@ -6,7 +6,7 @@ import PhraseSection from 'src/components/PhraseSection'
 
 const ResultsTable = ({ questionResults }: { questionResults: AbbreviationWithResult[] }) => {
   return (
-    <div className=" overflow-x-auto -mx-7 px-3 md:px-7 pb-2">
+    <div className=" overflow-x-auto -mx-7 px-5 md:px-7 pb-2">
       <table className="table-auto w-full text-lg md:text-xl leading-5">
         <thead className="font-serif font-bold">
           <tr>
