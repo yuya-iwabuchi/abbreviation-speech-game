@@ -36,7 +36,7 @@ const AnsweringStep = ({
     recognition.lang = 'en-US'
     recognition.continuous = true
     recognition.interimResults = true
-    recognition.maxAlternatives = 3
+    recognition.maxAlternatives = 2
 
     // Add grammar for answer hints if supported
     if (BrowserSpeechGrammarList) {
@@ -75,7 +75,15 @@ const AnsweringStep = ({
   useEffect(() => {
     const handleSpeechResult = (event: SpeechRecognitionEvent) => {
       console.log('[SpeechRecognition] transcript result:', event)
-      setTranscriptResults(Array.from(event.results))
+      setTranscriptResults((prevResults) => {
+        const prevFinalResults = prevResults.filter(({ isFinal }) => isFinal)
+        // Hacky solution to support both symptoms:
+        // Chrome Desktop -> returns previous results (with isFinal=true) alongside newer results (with isFinal=false)
+        // Chrome Android -> returns only new results (with isFinal=false)
+        const nextNewResults = Array.from(event.results).filter((result) => !prevFinalResults.includes(result))
+
+        return [...prevFinalResults, ...nextNewResults]
+      })
     }
     const handleSpeechError = (event: SpeechRecognitionErrorEvent) => {
       console.error('[SpeechRecognition] recognition error:', event)
@@ -105,7 +113,7 @@ const AnsweringStep = ({
         recognition.removeEventListener('result', handleSpeechResult)
         recognition.removeEventListener('error', handleSpeechError)
         recognition.removeEventListener('end', handleSpeechEnd)
-      }, BEAT_MS)
+      }, BEAT_MS * 2)
       console.log('[SpeechRecognition] removed event listeners')
     }
   }, [recognition, setTranscriptResults, handleSpeechRecognitionError])

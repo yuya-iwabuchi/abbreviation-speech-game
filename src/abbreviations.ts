@@ -80,7 +80,6 @@ export const DEVELOPER_ABBREVIATIONS: Abbreviation[] = [
   { abbreviation: 'JPEG', phrase: 'joint photographic experts group' },
   { abbreviation: 'NTP', phrase: 'network time protocol' },
   { abbreviation: 'DBMS', phrase: 'database management service' },
-  { abbreviation: 'CAD', phrase: 'computer aided design' },
   { abbreviation: 'AI', phrase: 'artificial intelligence' },
   { abbreviation: 'SSR', phrase: 'server side rendering' },
   { abbreviation: 'CTA', phrase: 'call to action' },
@@ -98,6 +97,7 @@ export const DEVELOPER_ABBREVIATIONS: Abbreviation[] = [
 ]
 
 export const TECH_ABBREVIATIONS: Abbreviation[] = [
+  { abbreviation: 'CAD', phrase: 'computer aided design' },
   { abbreviation: 'CD', phrase: 'compact disc' },
   { abbreviation: 'LTE', phrase: 'long term evolution' },
   { abbreviation: 'Wi-Fi', phrase: 'wireless fidelity' },
