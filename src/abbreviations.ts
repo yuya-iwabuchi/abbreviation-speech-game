@@ -95,6 +95,7 @@ export const DEVELOPER_ABBREVIATIONS: Abbreviation[] = [
   { abbreviation: 'REST', phrase: 'representational state transfer' },
   { abbreviation: 'VB', phrase: 'visual basic' },
   { abbreviation: 'XP', phrase: 'extreme programming' },
+  { abbreviation: 'BLOB', phrase: 'binary large object' },
 ]
 
 export const TECH_ABBREVIATIONS: Abbreviation[] = [
