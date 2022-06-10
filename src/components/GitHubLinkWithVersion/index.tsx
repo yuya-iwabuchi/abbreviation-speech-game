@@ -7,11 +7,18 @@ const GitHubLinkWithVersion = () => {
   const [shortHash, lastCommitDate] = useMemo(() => {
     const gitInfo = getGitInfo()
     const commitHash = gitInfo?.commit?.shortHash
-    const commitDate = gitInfo?.commit?.date.slice(0, 10)
+    const commitDate = gitInfo?.commit?.date.slice(0, 10).replaceAll('-', '_')
     return [commitHash, commitDate]
   }, [])
   return (
     <>
+      <div className="absolute top-0 right-0 w-[90px] h-[90px] flex justify-center items-center overflow-hidden">
+        <code className="text-[0.7rem] rotate-45 text-blue-800 dark:text-blue-200">
+          <span>{lastCommitDate}</span>
+          <span>_</span>
+          <span>{shortHash}</span>
+        </code>
+      </div>
       <a
         href="https://github.com/yuya-iwabuchi/abbreviation-speech-game"
         className="github-corner"
@@ -35,12 +42,7 @@ const GitHubLinkWithVersion = () => {
             d="M115 115s4 2 5 0l14-14c3-2 6-3 8-3-8-11-15-24 2-41 5-5 10-7 16-7 1-2 3-7 12-11 0 0 5 3 7 16 4 2 8 5 12 9s7 8 9 12c14 3 17 7 17 7-4 8-9 11-11 11 0 6-2 11-7 16-16 16-30 10-41 2 0 3-1 7-5 11l-12 11c-1 1 1 5 1 5z"
           />
         </svg>
-      </a>{' '}
-      <code className="absolute top-[38px] right-[-5px] text-[0.6rem] rotate-45 text-blue-800 dark:text-blue-200">
-        <span>{lastCommitDate}</span>
-        <span>_</span>
-        <span>{shortHash}</span>
-      </code>
+      </a>
     </>
   )
 }
