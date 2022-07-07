@@ -94,6 +94,7 @@ export const DEVELOPER_ABBREVIATIONS: Abbreviation[] = [
   { abbreviation: 'BLOB', phrase: 'binary large object' },
   { abbreviation: 'CD', phrase: 'continuous delivery' },
   { abbreviation: 'CI', phrase: 'continuous integration' },
+  { abbreviation: 'DRY', phrase: "don't repeat yourself" },
 ]
 
 export const TECH_ABBREVIATIONS: Abbreviation[] = [
